@@ -1,0 +1,16 @@
+{
+    "workbench.colorTheme": "SynthWave '84",
+    "security.workspace.trust.untrustedFiles": "open",
+    "terminal.integrated.allowChords": false,
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "sshfs.configs": [
+        {
+            "name": "homeserver1-homepage",
+            "host": "192.168.1.8",
+            "root": "/srv/container/hompage/config",
+            "username": "service",
+            "privateKeyPath": "$HOME/.ssh/homeserver1",
+            "sftpSudo": true
+        }
+    ]
+}
