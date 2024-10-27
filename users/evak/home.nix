@@ -2,7 +2,8 @@
 
 {
   imports = [
-    ./userModules/discord
+    ./userModules/applications/discord
+    ./userModules/applications/vscodium
   ];
 
   # Home Manager needs a bit of information about you and the paths it should

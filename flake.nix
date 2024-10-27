@@ -18,7 +18,10 @@
               # Note: I am sure this could be done better with flake-utils or something
               pkgs = import nixpkgs { system = "x86_64-linux"; };
 
-              modules = [ ./hosts/workstation/evak/home.nix ]; # Defined later
+              modules = [ 
+                ./hosts/workstation
+                ./users/evak/home.nix 
+              ];
           };
       };
   };
