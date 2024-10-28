@@ -1,0 +1,180 @@
+{
+    "initial_workspaces": [
+        "browsing",
+        "studying"
+    ],
+
+    "screens": [
+        {
+            "name": "DP-1",
+            "alias": "LEFT_MONITOR"
+        },
+        {
+            "name": "HDMI-A-1",
+            "alias": "RIGHT_MONITOR"
+        }
+    ],
+    "workspaces": [
+        {
+            "name": "browsing",
+            "default_screen": "RIGHT_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "LEFT_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "chromium",
+                            "exec": "/usr/bin/chromium --ozone-platform=wayland --disable-gpu",
+                            "focused_default": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "studying",
+            "default_screen": "LEFT_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "RIGHT_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "obsidian",
+                            "exec": "/usr/bin/obsidian --ozone-platform=wayland --disable-gpu",
+                            "focused_default": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "social",
+            "default_screen": "RIGHT_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "RIGHT_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "discord",
+                            "exec": "/usr/bin/discord --ozone-platform=wayland --disable-gpu",
+                            "focused_default": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "development",
+            "default_screen": "RIGHT_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "LEFT_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "code",
+                            "exec": "/usr/bin/vscodium --ozone-platform-hint=wayland --disable-gpu",
+                            "focused_default": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "passwords",
+            "default_screen": "RIGHT_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "LEFT_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "keepassxc",
+                            "exec": "/usr/bin/keepassxc",
+                            "focused_default": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "office",
+            "default_screen": "RIGHT_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "RIGHT_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "libreoffice",
+                            "exec": "/usr/bin/libreoffice",
+                            "focused_default": true
+                        }
+                    ]
+                }
+            ]
+        }, {
+            "name": "gaming",
+            "default_screen": "LEFT_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "RIGHT_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "feed-the-beast",
+                            "exec": "/usr/bin/ftb-app",
+                            "focused_default": true
+                        }
+                    ]
+                }
+            ]
+        }, {
+            "name": "music",
+            "default_screen": "LEFT_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "RIGHT_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "gtick",
+                            "exec": "/usr/bin/gtick",
+                            "focused_default": true
+                        },
+                        {
+                            "name": "lingot",
+                            "exec": "/usr/bin/lingot",
+                            "focused_default": false
+                        }
+                    ]
+                },
+                {
+                    "preferred_screen": "LEFT_MONITOR",
+                    "displayed_default": false,
+                    "applications": [
+                        {
+                            "name": "rakarrack",
+                            "exec": "/usr/bin/rakarrack",
+                            "focused_default": true
+                        }
+                    ]
+                },
+                {
+                    "preferred_screen": "LEFT_MONITOR",
+                    "displayed_default": false,
+                    "applications": [
+                        {
+                            "name": "tuxguitar",
+                            "exec": "/usr/bin/tuxguitar",
+                            "focused_default": true
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
