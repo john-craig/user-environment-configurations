@@ -7,9 +7,11 @@
           url = "github:nix-community/home-manager";
           inputs.nixpkgs.follows = "nixpkgs";
       };
+
+      nixpkgs-apocrypha.url = "git+https://gitea.chiliahedron.wtf/chiliahedron/nixpkgs-apocrypha";
   };
 
-  outputs = {nixpkgs, home-manager, ...}: {
+  outputs = {nixpkgs, home-manager, nixpkgs-apocrypha, ...}: {
       # For `nix run .` later
       defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
 
@@ -19,6 +21,7 @@
               pkgs = import nixpkgs { system = "x86_64-linux"; };
 
               modules = [ 
+                { nixpkgs.overlays = [ nixpkgs-apocrypha.overlays.default ]; }
                 ./hosts/workstation
                 ./users/evak/home.nix 
               ];

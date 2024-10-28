@@ -1,4 +1,8 @@
 #!/bin/bash
+
+EXTRA_ARGS=""
+EXTRA_ARGS="${EXTRA_ARGS} --override-input nixpkgs-apocrypha ${NIXPKGS_APOCRYPHA}"
+
 TARGET_USER=$1
 TARGET_HOST=$2
 
@@ -14,4 +18,4 @@ fi
 
 USER_ENVIRONMENT_CONFIGURATIONS=$HOME/programming/by_category/user_environment/user-environment-configurations
 
-home-manager switch -b bak --flake "$USER_ENVIRONMENT_CONFIGURATIONS#$TARGET_USER@$TARGET_HOST"
+home-manager switch -b bak --flake "$USER_ENVIRONMENT_CONFIGURATIONS#$TARGET_USER@$TARGET_HOST" ${EXTRA_ARGS}

@@ -1,5 +1,36 @@
 {
   "nodes": {
+    "apocryphalNixosModules": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-P0HhuAmtG2xaUpJOfwDirE7tqBaQdBzYOCEQzC/fhBs=",
+        "path": "/nix/store/pvqwsm0fil3hbx2mkwlz3jvsdiila63z-source/nixosModules",
+        "type": "path"
+      },
+      "original": {
+        "path": "/nix/store/pvqwsm0fil3hbx2mkwlz3jvsdiila63z-source/nixosModules",
+        "type": "path"
+      }
+    },
+    "apocryphalPackages": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3",
+        "utils": "utils"
+      },
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-eVtV7Wh5mreIqYzg7xAJQuZm0zvhvJARsewlUljvt48=",
+        "path": "/nix/store/pvqwsm0fil3hbx2mkwlz3jvsdiila63z-source/packages",
+        "type": "path"
+      },
+      "original": {
+        "path": "/nix/store/pvqwsm0fil3hbx2mkwlz3jvsdiila63z-source/packages",
+        "type": "path"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -36,10 +67,95 @@
         "type": "github"
       }
     },
+    "nixpkgs-apocrypha": {
+      "inputs": {
+        "apocryphalNixosModules": "apocryphalNixosModules",
+        "apocryphalPackages": "apocryphalPackages"
+      },
+      "locked": {
+        "lastModified": 1730130852,
+        "narHash": "sha256-pV1oHwNULbhR9eLgnnJ6VzD/+iKiEJFLwgu7wo3rwec=",
+        "ref": "refs/heads/main",
+        "rev": "17bd6ca1b7a4ecd9131bbe411b426b6b9367de0d",
+        "revCount": 47,
+        "type": "git",
+        "url": "https://gitea.chiliahedron.wtf/chiliahedron/nixpkgs-apocrypha"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://gitea.chiliahedron.wtf/chiliahedron/nixpkgs-apocrypha"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1717196966,
+        "narHash": "sha256-yZKhxVIKd2lsbOqYd5iDoUIwsRZFqE87smE2Vzf6Ck0=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "57610d2f8f0937f39dbd72251e9614b1561942d8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1716948383,
+        "narHash": "sha256-SzDKxseEcHR5KzPXLwsemyTR/kaM9whxeiJohbL04rs=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "ad57eef4ef0659193044870c731987a6df5cf56b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-apocrypha": "nixpkgs-apocrypha"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1710146030,
+        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
       }
     }
   },
