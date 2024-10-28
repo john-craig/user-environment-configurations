@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 {
   imports = [
+    ./nix
+    ./user-dirs
     ./hypr
     ./wezterm
     ./waybar

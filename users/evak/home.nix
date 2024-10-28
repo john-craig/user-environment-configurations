@@ -4,6 +4,7 @@
   imports = [
     ./userModules/applications
     ./userModules/scripts
+    ./userModules/shell
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -26,11 +27,6 @@
     
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    
-  };
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
@@ -48,9 +44,6 @@
   #
   #  /etc/profiles/per-user/evak/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
