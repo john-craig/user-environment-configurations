@@ -6,7 +6,7 @@
     ./hypr
     ./wezterm
     ./waybar
-    ./pipewire
+    # ./pipewire
     ./keepassxc
     ./gtk
     ./better-discord
