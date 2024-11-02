@@ -1,12 +1,13 @@
 { config, pkgs, ... }:
 {
   imports = [
+    ./completions
     ./path
-    ./variables
     ./plugins
+    ./variables
   ];
 
   programs.zsh = {
-      enable = true;
+    enable = true;
   };
 }
