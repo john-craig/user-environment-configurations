@@ -13,5 +13,6 @@
     ./rofi
     ./discord
     ./vscodium
+    ./ungoogled-chromium
   ];
 }

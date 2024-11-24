@@ -25,7 +25,7 @@
                     "applications": [
                         {
                             "name": "chromium",
-                            "exec": "/usr/bin/chromium --ozone-platform=wayland --disable-gpu",
+                            "exec": "/home/evak/.nix-profile/bin/chromium",
                             "focused_default": true
                         }
                     ]
