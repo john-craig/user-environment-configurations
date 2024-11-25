@@ -7,6 +7,7 @@
     ./wezterm
     ./waybar
     # ./pipewire
+    ./dismas
     ./keepassxc
     ./gtk
     ./better-discord

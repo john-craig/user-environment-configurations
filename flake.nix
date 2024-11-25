@@ -21,7 +21,7 @@
               pkgs = import nixpkgs { system = "x86_64-linux"; };
 
               modules = [ 
-                { nixpkgs.overlays = [ nixpkgs-apocrypha.overlays.default ]; }
+                { nixpkgs.overlays = [ nixpkgs-apocrypha.overlays."x86_64-linux" ]; }
                 ./hosts/workstation
                 ./users/evak/home.nix 
               ];
@@ -31,7 +31,7 @@
               pkgs = import nixpkgs { system = "x86_64-linux"; };
 
               modules = [ 
-                { nixpkgs.overlays = [ nixpkgs-apocrypha.overlays.default ]; }
+                { nixpkgs.overlays = [ nixpkgs-apocrypha.overlays."x86_64-linux" ]; }
                 ./hosts/laptop
                 ./users/evak/home.nix 
               ];
