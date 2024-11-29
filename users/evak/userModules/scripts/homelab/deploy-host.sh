@@ -1,16 +1,12 @@
 #!/bin/bash
 
+DEV_MODE=false
 EXTRA_ARGS=""
-COLLECT_GARBAGE=1
 
 for arg in "$@"; do
   case "$arg" in
     --dev)
-      EXTRA_ARGS="${EXTRA_ARGS} --fast"
-      EXTRA_ARGS="${EXTRA_ARGS} --override-input nixpkgs-apocrypha ${NIXPKGS_APOCRYPHA}"
-      EXTRA_ARGS="${EXTRA_ARGS} --override-input gallipedal ${GALLIPEDAL_MODULE}"
-      EXTRA_ARGS="${EXTRA_ARGS} --override-input gallipedal/gallipedal-library ${GALLIPEDAL_SERVICES}"
-      COLLECT_GARBAGE=0
+      DEV_MODE=true
       ;;
     *)
       TARGET_HOST="$arg"
@@ -23,16 +19,23 @@ if [[ -z $TARGET_HOST ]]; then
     exit 1
 fi
 
-set -eo pipefail
+if [[ $DEV_MODE == true ]]; then
+  DISMAS_OVERLAYS=$(readlink $HOME/.config/dismas/overlays)
 
-nixos-rebuild dry-activate --flake "${HOMELAB_CONFIGURATIONS}#${TARGET_HOST}" \
-    --target-host "${TARGET_HOST}" --build-host "${TARGET_HOST}" \
-    --use-remote-sudo ${EXTRA_ARGS}
-
-nixos-rebuild switch --flake "${HOMELAB_CONFIGURATIONS}#${TARGET_HOST}" \
-    --target-host "${TARGET_HOST}" --build-host "${TARGET_HOST}" \
-    --use-remote-sudo ${EXTRA_ARGS}
-
-if [[ $COLLECT_GARBAGE -eq 1 ]]; then
-    ssh "${TARGET_HOST}" "sudo nix-collect-garbage"
+  EXTRA_ARGS="${EXTRA_ARGS} --fast"
+  EXTRA_ARGS="${EXTRA_ARGS} --impure"
+  EXTRA_ARGS="${EXTRA_ARGS} --override-input nixpkgs-apocrypha ${NIXPKGS_APOCRYPHA}"
+  EXTRA_ARGS="${EXTRA_ARGS} --override-input gallipedal ${GALLIPEDAL_MODULE}"
+  EXTRA_ARGS="${EXTRA_ARGS} --override-input gallipedal/gallipedal-library ${GALLIPEDAL_SERVICES}"
+  
+  nixos-rebuild switch --flake "${HOMELAB_CONFIGURATIONS}#${TARGET_HOST}" \
+      --target-host "${TARGET_HOST}" --build-host "${TARGET_HOST}" \
+      --use-remote-sudo ${EXTRA_ARGS}
+  
+  # rm $HOME/.config/nixpkgs/overlays
+else
+  nixos-rebuild switch --flake "${HOMELAB_CONFIGURATIONS}#${TARGET_HOST}" \
+      --target-host "${TARGET_HOST}" --build-host "${TARGET_HOST}" \
+      --use-remote-sudo ${EXTRA_ARGS}
+  ssh "${TARGET_HOST}" "sudo nix-collect-garbage"
 fi

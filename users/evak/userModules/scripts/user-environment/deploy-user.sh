@@ -45,7 +45,7 @@ if [[ $DEV_MODE == true ]]; then
     EXTRA_ARGS="${EXTRA_ARGS} --override-input nixpkgs-apocrypha ${NIXPKGS_APOCRYPHA}"
     EXTRA_ARGS="${EXTRA_ARGS} --impure"
 
-    ln -s $HOME/.config/dismas/overlays $HOME/.config/nixpkgs/overlays
+    ln -s $(readlink $HOME/.config/dismas/overlays) $HOME/.config/nixpkgs/overlays
 
     home-manager switch -b bak --flake "$USER_ENVIRONMENT_CONFIGURATIONS#$TARGET_USER@$TARGET_HOST" ${EXTRA_ARGS}
 

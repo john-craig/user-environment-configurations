@@ -13,6 +13,7 @@
     MEDIA="$HOME/media";
 
     USER_ENVIRONMENT_CONFIGURATIONS="$HOME/programming/by_category/user_environment/user-environment-configurations";
+    DISK_IMAGE_CONFIGURATIONS="$HOME/programming/by_category/homelab/disk-image-configurations";
     HOMELAB_CONFIGURATIONS="$HOME/programming/by_category/homelab/homelab-configurations";
     NIXPKGS_APOCRYPHA="$HOME/programming/by_category/homelab/nixpkgs-apocrypha";
 

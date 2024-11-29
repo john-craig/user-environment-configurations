@@ -3,5 +3,6 @@
   imports = [
     ./homelab
     ./user-environment
+    ./disk-images
   ];
 }

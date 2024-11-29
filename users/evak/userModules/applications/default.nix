@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
+    ./git
     ./nix
     ./user-dirs
     ./hypr
