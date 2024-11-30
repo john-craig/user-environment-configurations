@@ -24,9 +24,9 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    dismas
     faustroll
     panmuphle
+    alucard
   ];
   
   # Home Manager can also manage your environment variables through

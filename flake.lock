@@ -6,28 +6,49 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-P0HhuAmtG2xaUpJOfwDirE7tqBaQdBzYOCEQzC/fhBs=",
-        "path": "/nix/store/k109a8q9qlghhnfp21k5v2mnik07n1pi-source/nixosModules",
+        "narHash": "sha256-TtKj0TwsPGlNeNqSp+nM0waUyAmfbxYfTwT2awtIk1w=",
+        "path": "/nix/store/s93y6xpcskvld35xfsv9sxj4qf9gkdm7-source/nixosModules",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/k109a8q9qlghhnfp21k5v2mnik07n1pi-source/nixosModules",
+        "path": "/nix/store/s93y6xpcskvld35xfsv9sxj4qf9gkdm7-source/nixosModules",
         "type": "path"
       }
     },
     "apocryphalPackages": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": [
+          "nixpkgs-apocrypha",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-9g+gefSzqsi6ND9auEQfPVWFmtzO5lfJlRXJhubhP3k=",
-        "path": "/nix/store/k109a8q9qlghhnfp21k5v2mnik07n1pi-source/packages",
+        "narHash": "sha256-1Lji3sjrwA2onAenoWIf2us+G4ouUOfoK3jdW3fmM0A=",
+        "path": "/nix/store/s93y6xpcskvld35xfsv9sxj4qf9gkdm7-source/packages",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/k109a8q9qlghhnfp21k5v2mnik07n1pi-source/packages",
+        "path": "/nix/store/s93y6xpcskvld35xfsv9sxj4qf9gkdm7-source/packages",
+        "type": "path"
+      }
+    },
+    "apocryphalUtilities": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-apocrypha",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-B7fMLvkoNYsMlbrfeqIGW7ojHwNhW5B159OJbsg7D3k=",
+        "path": "/nix/store/s93y6xpcskvld35xfsv9sxj4qf9gkdm7-source/utilities",
+        "type": "path"
+      },
+      "original": {
+        "path": "/nix/store/s93y6xpcskvld35xfsv9sxj4qf9gkdm7-source/utilities",
         "type": "path"
       }
     },
@@ -88,14 +109,16 @@
     "nixpkgs-apocrypha": {
       "inputs": {
         "apocryphalNixosModules": "apocryphalNixosModules",
-        "apocryphalPackages": "apocryphalPackages"
+        "apocryphalPackages": "apocryphalPackages",
+        "apocryphalUtilities": "apocryphalUtilities",
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1732554448,
-        "narHash": "sha256-exCCQTzwLy52+HSiMt4SC25KMzhCR76n5dTV6NmXlmk=",
+        "lastModified": 1732938386,
+        "narHash": "sha256-PP5nIuOZHV1XDk0aSSmQb4P2uTcfmp1yqh4ZLyznMws=",
         "ref": "refs/heads/main",
-        "rev": "79deb007d6841783ba20677b396180b1b89ad41a",
-        "revCount": 55,
+        "rev": "df4a6e0aebdaf1af536659a4259e89f6055fddcb",
+        "revCount": 62,
         "type": "git",
         "url": "https://gitea.chiliahedron.wtf/chiliahedron/nixpkgs-apocrypha"
       },
@@ -122,11 +145,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1716948383,
-        "narHash": "sha256-SzDKxseEcHR5KzPXLwsemyTR/kaM9whxeiJohbL04rs=",
+        "lastModified": 1732521221,
+        "narHash": "sha256-2ThgXBUXAE1oFsVATK1ZX9IjPcS4nKFOAjhPNKuiMn0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "ad57eef4ef0659193044870c731987a6df5cf56b",
+        "rev": "4633a7c72337ea8fd23a4f2ba3972865e3ec685d",
         "type": "github"
       },
       "original": {
