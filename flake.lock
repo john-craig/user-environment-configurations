@@ -6,12 +6,12 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-TtKj0TwsPGlNeNqSp+nM0waUyAmfbxYfTwT2awtIk1w=",
-        "path": "/nix/store/s93y6xpcskvld35xfsv9sxj4qf9gkdm7-source/nixosModules",
+        "narHash": "sha256-o6KY5m51s8yPiyRQu1myvoii1t8Vydd20PBgeFgvfME=",
+        "path": "/nix/store/h2qm6r05rq1lfpyjmajvy2xdqizvq60l-source/nixosModules",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/s93y6xpcskvld35xfsv9sxj4qf9gkdm7-source/nixosModules",
+        "path": "/nix/store/h2qm6r05rq1lfpyjmajvy2xdqizvq60l-source/nixosModules",
         "type": "path"
       }
     },
@@ -25,12 +25,12 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-1Lji3sjrwA2onAenoWIf2us+G4ouUOfoK3jdW3fmM0A=",
-        "path": "/nix/store/s93y6xpcskvld35xfsv9sxj4qf9gkdm7-source/packages",
+        "narHash": "sha256-jzvqFPPZWZoMYgQSd4oTfIHkVT5BpcyVJ5pHscxH4oo=",
+        "path": "/nix/store/h2qm6r05rq1lfpyjmajvy2xdqizvq60l-source/packages",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/s93y6xpcskvld35xfsv9sxj4qf9gkdm7-source/packages",
+        "path": "/nix/store/h2qm6r05rq1lfpyjmajvy2xdqizvq60l-source/packages",
         "type": "path"
       }
     },
@@ -44,11 +44,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-B7fMLvkoNYsMlbrfeqIGW7ojHwNhW5B159OJbsg7D3k=",
-        "path": "/nix/store/s93y6xpcskvld35xfsv9sxj4qf9gkdm7-source/utilities",
+        "path": "/nix/store/h2qm6r05rq1lfpyjmajvy2xdqizvq60l-source/utilities",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/s93y6xpcskvld35xfsv9sxj4qf9gkdm7-source/utilities",
+        "path": "/nix/store/h2qm6r05rq1lfpyjmajvy2xdqizvq60l-source/utilities",
         "type": "path"
       }
     },
@@ -114,11 +114,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1732938386,
-        "narHash": "sha256-PP5nIuOZHV1XDk0aSSmQb4P2uTcfmp1yqh4ZLyznMws=",
+        "lastModified": 1733082419,
+        "narHash": "sha256-e7G4rd6PQQ2jx1eIE61I/NvQVsSpujugrhaNMzISwNA=",
         "ref": "refs/heads/main",
-        "rev": "df4a6e0aebdaf1af536659a4259e89f6055fddcb",
-        "revCount": 62,
+        "rev": "e1859010708a6257d04a2aa0eba0e0e6bd4c24fe",
+        "revCount": 66,
         "type": "git",
         "url": "https://gitea.chiliahedron.wtf/chiliahedron/nixpkgs-apocrypha"
       },
