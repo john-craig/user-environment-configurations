@@ -133,6 +133,22 @@
                 }
             ]
         }, {
+            "name": "editinh",
+            "default_screen": "RIGHT_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "RIGHT_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "feed-the-beast",
+                            "exec": "/usr/bin/lightworks",
+                            "focused_default": true
+                        }
+                    ]
+                }
+            ]
+        }, {
             "name": "music",
             "default_screen": "LEFT_MONITOR",
             "windows": [
