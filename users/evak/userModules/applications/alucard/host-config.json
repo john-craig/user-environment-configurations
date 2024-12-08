@@ -1,0 +1,20 @@
+{
+    "hosts": [
+        {
+            "hostname": "workstation",
+            "macAddress": "C4:65:16:1C:4E:D2"
+        },
+        {
+            "hostname": "homeserver1",
+            "macAddress": "80:C1:6E:21:F5:CC"
+        },
+        {
+            "hostname": "pxe_server",
+            "macAddress": "DC:A6:32:8F:2F:B8",
+            "architecture": "aarch64-linux",
+            "buildHosts": [
+                "homeserver1"
+            ]
+        }
+    ]
+}

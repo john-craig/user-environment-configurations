@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
+    ./alucard
     ./git
     ./nix
     ./user-dirs
