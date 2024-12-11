@@ -34,6 +34,12 @@
         sha256 = "sha256:07npn481ng7cqa48yn0b5xvqb41pnd731nnsvl2024ksjya1f7hj";
         version = "2.4.2";
       })
+      (createChromiumExtension {
+        # bitwarden
+        id = "nngceckbapebfimnlniiiahkandclblb";
+        sha256 = "sha256:0kxkjnac3h1vcjjn8x5c1dpplp3hk1wi1j53qa7h2yyf21yns92h";
+        version = "2024.11.2";
+      })
     ];
     commandLineArgs = [
       "--no-sandbox"
