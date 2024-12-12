@@ -133,7 +133,7 @@
                 }
             ]
         }, {
-            "name": "editinh",
+            "name": "editing",
             "default_screen": "RIGHT_MONITOR",
             "windows": [
                 {
