@@ -5,6 +5,7 @@
     ./userModules/applications
     ./userModules/scripts
     ./userModules/shell
+    ./userModules/fonts
   ];
 
   # Home Manager needs a bit of information about you and the paths it should

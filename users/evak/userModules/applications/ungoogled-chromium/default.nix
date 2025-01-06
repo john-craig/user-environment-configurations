@@ -19,17 +19,17 @@
       in
       [
         (createChromiumExtension {
-          # ublock origin
-          id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";
-          sha256 = "sha256:0lj0b5a2vga9x8nr12f9ijv1n0f8zcyzml19bzvw722jb98mic88";
-          version = "1.37.2";
+          # adguard
+          id = "bgnkhhnnamicmpeenaelnjfhikgbkllg";
+          sha256 = "sha256:1mxz316fd0z69x2s6bbzi9h4d0id49hgag8ip16y30pcmx2i8sc0";
+          version = "5.0.178";
         })
-        (createChromiumExtension {
-          # keepassxc
-          id = "oboonakemofpalcgghocfoadofidjkkk";
-          sha256 = "sha256:0bh1jcvjw0cprbk8fy6jbngzpc48cbvjlhbfl0ca20nzrgams2g7";
-          version = "1.9.4";
-        })
+        # (createChromiumExtension {
+        #   # keepassxc
+        #   id = "oboonakemofpalcgghocfoadofidjkkk";
+        #   sha256 = "sha256:0bh1jcvjw0cprbk8fy6jbngzpc48cbvjlhbfl0ca20nzrgams2g7";
+        #   version = "1.9.4";
+        # })
         (createChromiumExtension {
           # privacy.com
           id = "hmgpakheknboplhmlicfkkgjipfabmhp";
@@ -42,12 +42,19 @@
           sha256 = "sha256:0kxkjnac3h1vcjjn8x5c1dpplp3hk1wi1j53qa7h2yyf21yns92h";
           version = "2024.11.2";
         })
+        (createChromiumExtension {
+          # limiter
+          id = "blcdfhbibkkjpfdddnmnmhfgjlicebba";
+          sha256 = "sha256:0n3dx3bypdhslj9lixn2a6b80h6ygrk9ygy0c5g4ld9hb238i5y5";
+          version = "1.0.3";
+        })
       ];
     commandLineArgs = [
       "--no-sandbox"
       "--ozone-platform=wayland"
       "--disable-gpu"
       "--force-dark-mode"
+      "--restore-last-session"
     ];
 
   };
