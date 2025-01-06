@@ -42,11 +42,17 @@
           sha256 = "sha256:0kxkjnac3h1vcjjn8x5c1dpplp3hk1wi1j53qa7h2yyf21yns92h";
           version = "2024.11.2";
         })
+        # (createChromiumExtension {
+        #   # limiter
+        #   id = "blcdfhbibkkjpfdddnmnmhfgjlicebba";
+        #   sha256 = "sha256:0n3dx3bypdhslj9lixn2a6b80h6ygrk9ygy0c5g4ld9hb238i5y5";
+        #   version = "1.0.3";
+        # })
         (createChromiumExtension {
-          # limiter
-          id = "blcdfhbibkkjpfdddnmnmhfgjlicebba";
-          sha256 = "sha256:0n3dx3bypdhslj9lixn2a6b80h6ygrk9ygy0c5g4ld9hb238i5y5";
-          version = "1.0.3";
+          # focusguard
+          id = "ifdepgnnjpnbkcgempionjablajancjc";
+          sha256 = "sha256:0mhw5mz04zfbddxx588bh844j84kcjv18bvwyak3r36qkxl54az0";
+          version = "1.0.4";
         })
       ];
     commandLineArgs = [
