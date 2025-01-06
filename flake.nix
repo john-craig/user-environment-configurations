@@ -12,8 +12,10 @@
   };
 
   outputs = { nixpkgs, home-manager, nixpkgs-apocrypha, ... }: {
-    # For `nix run .` later
-    defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
+    nixosModules = {
+      "display@generic" = import ./users/display/home.nix;
+      "service@generic" = import ./users/service/home.nix;
+    };
 
     homeConfigurations = {
       "evak@workstation" = home-manager.lib.homeManagerConfiguration {
