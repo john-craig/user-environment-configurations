@@ -22,4 +22,8 @@
   home.sessionVariables = {
     PS1 = " 🔧 ";
   };
+
+  programs.zsh = {
+    enable = true;
+  };
 }
