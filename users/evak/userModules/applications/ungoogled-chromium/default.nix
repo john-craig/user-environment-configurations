@@ -54,6 +54,12 @@
           sha256 = "sha256:0mhw5mz04zfbddxx588bh844j84kcjv18bvwyak3r36qkxl54az0";
           version = "1.0.4";
         })
+        (createChromiumExtension {
+          # simplelogin
+          id = "dphilobhebphkdjbpfohgikllaljmgbn";
+          sha256 = "sha256:1sadbyydwl4bhqwsjpdwhar0f9azzak2rnvb8hyb9qvazy3bhd7g";
+          version = "3.0.5";
+        })
       ];
     commandLineArgs = [
       "--no-sandbox"
