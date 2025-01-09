@@ -60,6 +60,12 @@
           sha256 = "sha256:1sadbyydwl4bhqwsjpdwhar0f9azzak2rnvb8hyb9qvazy3bhd7g";
           version = "3.0.5";
         })
+        (createChromiumExtension {
+          # coinbase wallet
+          id = "hnfanknocfeofbddgcijnmhnfnkdnaad";
+          sha256 = "sha256:1g3bpgqx05qb53z13592cjkrkz1dnm2njrz0ispx3r0p321acwl3";
+          version = "3.98.1";
+        })
       ];
     commandLineArgs = [
       "--no-sandbox"
