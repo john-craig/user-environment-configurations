@@ -11,49 +11,41 @@
     nixpkgs-apocrypha.url = "git+https://gitea.chiliahedron.wtf/chiliahedron/nixpkgs-apocrypha";
   };
 
-  outputs = { nixpkgs, home-manager, nixpkgs-apocrypha, ... }: rec {
-    nixosModules = {
-      "display@generic" = {
+  outputs = { self, nixpkgs, home-manager, nixpkgs-apocrypha, ... }: 
+    let 
+      mkUserConfig = username: {
         imports = [ 
           ./modules
-          ./users/display/home.nix
+          ./users/${username}/home.nix
         ];
       };
-      "service@generic" = {
-        imports = [ 
-          ./modules
-          ./users/service/home.nix
-        ];
-      };
-      "evak" = {
-        imports = [
-          ./modules
-          ./users/evak/home.nix
-        ];
-      };
-    };
-
-    homeConfigurations = {
-      "evak@workstation" = home-manager.lib.homeManagerConfiguration {
-        # Note: I am sure this could be done better with flake-utils or something
-        pkgs = import nixpkgs { system = "x86_64-linux"; };
+      mkHomeConfig = homeDef: home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs { system = "${homeDef.arch}"; };
 
         modules = [
-          { nixpkgs.overlays = [ nixpkgs-apocrypha.overlays."x86_64-linux" ]; }
-          nixosModules.evak
-          ./hosts/workstation
+          { nixpkgs.overlays = [ nixpkgs-apocrypha.overlays."${homeDef.arch}" ]; }
+          self.nixosModules.${homeDef.user}
+          ./hosts/${homeDef.host}
         ];
       };
-      "evak@laptop" = home-manager.lib.homeManagerConfiguration {
-        # Note: I am sure this could be done better with flake-utils or something
-        pkgs = import nixpkgs { system = "x86_64-linux"; };
+    in {
+      nixosModules = {
+        "display" = mkUserConfig "display";
+        "service" = mkUserConfig "service";
+        "evak" = mkUserConfig "evak";
+      };
 
-        modules = [
-          { nixpkgs.overlays = [ nixpkgs-apocrypha.overlays."x86_64-linux" ]; }
-          nixosModules.evak
-          ./hosts/laptop
-        ];
+      homeConfigurations = {
+        "evak@workstation" = mkHomeConfig {
+          user = "evak";
+          host = "workstation";
+          arch = "x86_64-linux";
+        };
+        "evak@laptop" = mkHomeConfig {
+          user = "evak";
+          host = "laptop";
+          arch = "x86_64-linux";
+        };
       };
-    };
   };
 }
