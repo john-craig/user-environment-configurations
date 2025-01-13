@@ -26,4 +26,5 @@
   programs.zsh = {
     enable = true;
   };
+
 }

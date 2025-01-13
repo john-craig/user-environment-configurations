@@ -11,10 +11,26 @@
     nixpkgs-apocrypha.url = "git+https://gitea.chiliahedron.wtf/chiliahedron/nixpkgs-apocrypha";
   };
 
-  outputs = { nixpkgs, home-manager, nixpkgs-apocrypha, ... }: {
+  outputs = { nixpkgs, home-manager, nixpkgs-apocrypha, ... }: rec {
     nixosModules = {
-      "display@generic" = import ./users/display/home.nix;
-      "service@generic" = import ./users/service/home.nix;
+      "display@generic" = {
+        imports = [ 
+          ./modules
+          ./users/display/home.nix
+        ];
+      };
+      "service@generic" = {
+        imports = [ 
+          ./modules
+          ./users/service/home.nix
+        ];
+      };
+      "evak" = {
+        imports = [
+          ./modules
+          ./users/evak/home.nix
+        ];
+      };
     };
 
     homeConfigurations = {
@@ -24,8 +40,8 @@
 
         modules = [
           { nixpkgs.overlays = [ nixpkgs-apocrypha.overlays."x86_64-linux" ]; }
+          nixosModules.evak
           ./hosts/workstation
-          ./users/evak/home.nix
         ];
       };
       "evak@laptop" = home-manager.lib.homeManagerConfiguration {
@@ -34,8 +50,8 @@
 
         modules = [
           { nixpkgs.overlays = [ nixpkgs-apocrypha.overlays."x86_64-linux" ]; }
+          nixosModules.evak
           ./hosts/laptop
-          ./users/evak/home.nix
         ];
       };
     };
