@@ -7,7 +7,7 @@ set -eo pipefail
 SCANNER_DEVICE=$(lsusb | grep "Epson ES-50")
 SCANNER_DEVICE="epsonds:libusb:$(echo $SCANNER_DEVICE | cut -d' ' -f2):$(echo $SCANNER_DEVICE | cut -d' ' -f4 | cut -d':' -f1)"
 
-scanimage -D $SCANNER_DEVICE --format=jpeg --output-file $DOC_PATH
+scanimage -d $SCANNER_DEVICE --format=jpeg --output-file $DOC_PATH
 
 # Define the file path and API token
 API_TOKEN_PATH="/sec/paperless/workstation/evak/api-token.txt"
