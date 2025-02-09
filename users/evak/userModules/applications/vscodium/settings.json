@@ -12,5 +12,7 @@
             "privateKeyPath": "$HOME/.ssh/homeserver1",
             "sftpSudo": true
         }
-    ]
+    ],
+    "editor.fontFamily": "'JetBrains Mono', 'monospace', monospace",
+    "editor.fontLigatures": true
 }

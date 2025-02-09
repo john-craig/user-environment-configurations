@@ -11,15 +11,15 @@
     '';
 
     plugins = [
-      {
-        name = "zsh-shift-select";
-        src = pkgs.fetchFromGitHub {
-          owner = "jirutka";
-          repo = "zsh-shift-select";
-          rev = "v0.1.1";
-          hash = "sha256-4kUUBH2GTMb/d6PUNiSNFogkvDUSwMX823j4xsroJKs=";
-        };
-      }
+      # {
+      #   name = "zsh-shift-select";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "jirutka";
+      #     repo = "zsh-shift-select";
+      #     rev = "v0.1.1";
+      #     hash = "sha256-4kUUBH2GTMb/d6PUNiSNFogkvDUSwMX823j4xsroJKs=";
+      #   };
+      # }
       {
         name = "alpine-zsh-config";
         src = pkgs.fetchFromGitHub {
