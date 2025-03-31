@@ -7,11 +7,11 @@
     "screens": [
         {
             "name": "DP-1",
-            "alias": "LEFT_MONITOR"
+            "alias": "RIGHT_MONITOR"
         },
         {
             "name": "HDMI-A-1",
-            "alias": "RIGHT_MONITOR"
+            "alias": "LEFT_MONITOR"
         }
     ],
     "workspaces": [
@@ -26,6 +26,23 @@
                         {
                             "name": "chromium",
                             "exec": "/home/evak/.nix-profile/bin/chromium",
+                            "focused_default": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "browsing.nyxt",
+            "default_screen": "RIGHT_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "LEFT_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "nyxt",
+                            "exec": "/usr/bin/nyxt",
                             "focused_default": true
                         }
                     ]

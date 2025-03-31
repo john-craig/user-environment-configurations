@@ -4,6 +4,7 @@
     ./alucard
     ./git
     ./nix
+    ./nyxt
     ./user-dirs
     ./hypr
     ./wezterm
@@ -17,5 +18,6 @@
     ./discord
     ./vscodium
     ./ungoogled-chromium
+    ./openssh
   ];
 }

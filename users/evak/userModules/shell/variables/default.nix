@@ -14,6 +14,7 @@
 
     USER_ENVIRONMENT_CONFIGURATIONS = "$HOME/programming/by_category/user_environment/user-environment-configurations";
     DISK_IMAGE_CONFIGURATIONS = "$HOME/programming/by_category/homelab/disk-image-configurations";
+    VIRTUAL_MACHINE_CONFIGURATIONS = "$HOME/programming/by_category/homelab/virtual-machine-configurations";
     HOMELAB_CONFIGURATIONS = "$HOME/programming/by_category/homelab/homelab-configurations";
     NIXPKGS_APOCRYPHA = "$HOME/programming/by_category/homelab/nixpkgs-apocrypha";
 
