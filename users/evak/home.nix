@@ -29,6 +29,7 @@
     faustroll
     panmuphle
 
+    vscodium
     nyxt
     libreoffice
     obsidian
