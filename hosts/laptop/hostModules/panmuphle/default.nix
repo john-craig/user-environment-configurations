@@ -54,6 +54,15 @@ in {
             }
           ];
         }
+        {
+          # game-design
+          default_screen = "RIGHT_MONITOR";
+          windows = [
+            {
+              preferred_screen = "RIGHT_MONITOR";
+            }
+          ];
+        }
       ];
   };
 }

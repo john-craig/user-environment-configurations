@@ -77,6 +77,15 @@ in {
           ];
         }
         {
+          # game-design
+          default_screen = "RIGHT_MONITOR";
+          windows = [
+            {
+              preferred_screen = "RIGHT_MONITOR";
+            }
+          ];
+        }
+        {
           # gaming:feed-the-beast
           default_screen = "LEFT_MONITOR";
           windows = [

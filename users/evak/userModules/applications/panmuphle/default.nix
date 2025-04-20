@@ -9,7 +9,9 @@
       nyxt
       libreoffice
       obsidian
-      # godot_4
+
+      nixgl.nixGLIntel
+      godot_4
       # davinci-resolve
     ];
 
@@ -101,6 +103,21 @@
                 {
                   "name" = "libreoffice";
                   "exec" = "${pkgs.libreoffice}/bin/libreoffice";
+                  "focused_default" = true;
+                }
+              ];
+            }
+          ];
+        }
+        {
+          "name" = "game-development";
+          "windows" = [
+            {
+              "displayed_default" = true;
+              "applications" = [
+                {
+                  "name" = "godot";
+                  "exec" = "${pkgs.nixgl.nixGLIntel}/bin/nixGLIntel ${pkgs.godot_4}/bin/godot4 --display-driver wayland";
                   "focused_default" = true;
                 }
               ];

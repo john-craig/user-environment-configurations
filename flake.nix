@@ -8,10 +8,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixGL = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixpkgs-apocrypha.url = "git+https://gitea.chiliahedron.wtf/chiliahedron/nixpkgs-apocrypha";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixpkgs-apocrypha, ... }: 
+  outputs = { self, nixpkgs, nixGL, home-manager, nixpkgs-apocrypha, ... }: 
     let 
       mkUserConfig = username: {
         imports = [ 
@@ -20,7 +25,10 @@
         ];
       };
       mkHomeConfig = homeDef: home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = "${homeDef.arch}"; };
+        pkgs = import nixpkgs { 
+          system = "${homeDef.arch}"; 
+          overlays = [ nixGL.overlay ];
+        };
 
         modules = [
           { nixpkgs.overlays = [ nixpkgs-apocrypha.overlays."${homeDef.arch}" ]; }
