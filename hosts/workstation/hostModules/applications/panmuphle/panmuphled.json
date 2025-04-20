@@ -158,7 +158,7 @@
                     "displayed_default": true,
                     "applications": [
                         {
-                            "name": "feed-the-beast",
+                            "name": "lightworks",
                             "exec": "/usr/bin/lightworks",
                             "focused_default": true
                         }

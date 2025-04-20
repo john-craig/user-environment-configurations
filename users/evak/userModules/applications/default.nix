@@ -10,6 +10,7 @@
     ./wezterm
     ./waybar
     # ./pipewire
+    ./panmuphle
     ./dismas
     ./keepassxc
     ./gtk

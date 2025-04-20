@@ -27,13 +27,6 @@
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     faustroll
-    panmuphle
-
-    vscodium
-    nyxt
-    libreoffice
-    obsidian
-
   ];
 
   # Home Manager can also manage your environment variables through
