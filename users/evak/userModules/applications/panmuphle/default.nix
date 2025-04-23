@@ -32,7 +32,7 @@
               "applications" = [
                 {
                   "name" = "chromium";
-                  "exec" = "${pkgs.ungoogled-chromium}/bin/chromium";
+                  "exec" = "/home/evak/.nix-profile/bin/chromium";
                   "focused_default" = true;
                 }
               ];
@@ -47,7 +47,7 @@
               "applications" = [
                 {
                   "name" = "obsidian";
-                  "exec" = "${pkgs.obsidian}/bin/obsidian --ozone-platform=wayland --disable-gpu";
+                  "exec" = "${pkgs.obsidian}/bin/obsidian --ozone-platform=wayland --disable-gpu --no-sandbox";
                   "focused_default" = true;
                 }
               ];
@@ -62,7 +62,7 @@
               "applications" = [
                 {
                   "name" = "discord";
-                  "exec" = "/usr/bin/discord --ozone-platform=wayland --disable-gpu";
+                  "exec" = "/usr/bin/discord --ozone-platform=wayland --disable-gpu --no-sandbox";
                   "focused_default" = true;
                 }
               ];
@@ -77,7 +77,7 @@
               "applications" = [
                 {
                   "name" = "code";
-                  "exec" = "${pkgs.vscodium}/bin/codium --ozone-platform-hint=wayland --disable-gpu";
+                  "exec" = "${pkgs.vscodium}/bin/codium --ozone-platform-hint=wayland --disable-gpu --no-sandbox";
                   "focused_default" = true;
                 }
               ];
