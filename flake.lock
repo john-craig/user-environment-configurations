@@ -96,19 +96,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-<<<<<<< Updated upstream
-        "lastModified": 1745179067,
-        "narHash": "sha256-WDiBOhZTVJ22l2ofr3Lp2qE6PNIN06rfBfMe8TBeqKg=",
+        "lastModified": 1745695853,
+        "narHash": "sha256-A6d+O9HedaYBf24HdjsY1/h5coIiCS4Zo4MQ5gRXhbY=",
         "ref": "refs/heads/main",
-        "rev": "12546bb9b42579c34e62ea794422e92199ede134",
-        "revCount": 81,
-=======
-        "lastModified": 1745370273,
-        "narHash": "sha256-t4KW1jHqWB9gMQ/68Voi+NH+9vpHliIV/4PPO3vPZhE=",
-        "ref": "refs/heads/main",
-        "rev": "336a975d39031877fd9a98b70045be23a64d10a4",
-        "revCount": 87,
->>>>>>> Stashed changes
+        "rev": "e353ff41819400b1bed63ef7ae8933ebbc063968",
+        "revCount": 88,
         "type": "git",
         "url": "https://gitea.chiliahedron.wtf/chiliahedron/nixpkgs-apocrypha"
       },
