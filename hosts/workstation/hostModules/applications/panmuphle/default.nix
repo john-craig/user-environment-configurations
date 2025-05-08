@@ -1,6 +1,8 @@
 { config, pkgs, lib, ... }: let 
 in {
   panmuphle = {
+    globalDefaultScreen = "RIGHT_MONITOR";
+
     screens = [
       {
         name = "DP-1";
@@ -31,68 +33,25 @@ in {
     ];
 
     workspaceScreens = [
-        {
-          # browsing
+        "browsing" = {
           default_screen = "RIGHT_MONITOR";
-          windows = [
-            {
-              preferred_screen = "LEFT_MONITOR";
-            }
-          ];
-        }
-        {
-          # studying
+          windows."0".preferred_screen = "LEFT_MONITOR";
+        };
+        "studying" = {
           default_screen = "LEFT_MONITOR";
-          windows = [
-            {
-              preferred_screen = "RIGHT_MONITOR";
-            }
-          ];
-        }
-        {
-          # social
+          windows."0".preferred_screen = "RIGHT_MONITOR";
+        };
+        "social" = {
           default_screen = "RIGHT_MONITOR";
-          windows = [
-            {
-              preferred_screen = "RIGHT_MONITOR";
-            }
-          ];
-        }
-        {
-          # development
+          windows."0".preferred_screen = "LEFT_MONITOR";
+        };
+        "development" = {
           default_screen = "RIGHT_MONITOR";
-          windows = [
-            {
-              preferred_screen = "LEFT_MONITOR";
-            }
-          ];
-        }
-        {
-          # office
-          default_screen = "RIGHT_MONITOR";
-          windows = [
-            {
-              preferred_screen = "RIGHT_MONITOR";
-            }
-          ];
-        }
-        {
-          # game-design
-          default_screen = "RIGHT_MONITOR";
-          windows = [
-            {
-              preferred_screen = "RIGHT_MONITOR";
-            }
-          ];
-        }
-        {
-          # gaming:feed-the-beast
+          windows."0".preferred_screen = "LEFT_MONITOR";
+        };
+        "gaming:feed-the-beast" = {
           default_screen = "LEFT_MONITOR";
-          windows = [
-            {
-              preferred_screen = "RIGHT_MONITOR";
-            }
-          ];
+          windows."0".preferred_screen = "RIGHT_MONITOR";
         }
       ];
   };

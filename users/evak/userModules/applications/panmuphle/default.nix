@@ -18,7 +18,7 @@
     panmuphle = {
       enable = true;
 
-      initial_workspaces = [
+      initialWorkspaces = [
         "browsing"
         "studying"
       ];

@@ -1,31 +1,41 @@
 { pkgs, lib, config, ... }: let
-  mergeWindowLists = a: b:
-    # assertMsg (builtins.length a == builtins.length b)
-    #   "Arrays to merge must be of equal length.";
-    lib.imap0 (i: x: x // (builtins.elemAt b i)) a;
+  mergeWorkspaceScreens = (
+    workspaces: workspaceScreens: globalDefaultScreen:
+      map (workspace:
+        let
+          wsName = workspace.name;
+          wsScreenConf = lib.attrByPath [wsName] null workspaceScreens;
+          defaultScreen = if wsScreenConf != null
+                          then wsScreenConf.default_screen
+                          else globalDefaultScreen;
 
-  mergeWorkspaceAttrs = a: b:
-    lib.attrsets.mergeAttrsList [
-      a b 
-      {
-        windows = mergeWindowLists
-          (lib.lists.optionals
-            (builtins.hasAttr "windows" a) a.windows)
-          (lib.lists.optionals
-            (builtins.hasAttr "windows" b) b.windows);
-      }
-    ];
+          updatedWindows = lib.imap0 (i: win:
+            let
+              preferredScreen = if wsScreenConf != null
+                                then lib.attrByPath ["windows" (toString i) "preferred_screen"] defaultScreen wsScreenConf
+                                else defaultScreen;
+            in
+              win // { preferred_screen = preferredScreen; }
+          ) workspace.windows;
 
-  mergeWorkspaceLists = a: b:
-    # assertMsg (builtins.length a == builtins.length b)
-    #   "Arrays to merge must be of equal length.";
-    lib.imap0 (i: x: (mergeWorkspaceAttrs x (builtins.elemAt b i))) a;
+        in
+          workspace // {
+            default_screen = defaultScreen;
+            windows = updatedWindows;
+          }
+      ) workspaces
+  );
 in {
   options = {
     panmuphle = {
       enable = lib.mkEnableOption "configuration Panmuphle window organizer";
 
-      initial_workspaces = lib.mkOption {
+      globalDefaultScreen = lib.mkOption {
+        type = lib.types.str;
+        description = "Default screen to use for all workspaces";
+      };
+
+      initialWorkspaces = lib.mkOption {
         type = lib.types.listOf lib.types.str; # Define it as a list of strings
         default = [ ]; # Default to an empty list
         description = "Initial workspaces to start when Panmuphle begins";
@@ -96,7 +106,7 @@ in {
       };
 
       workspaceScreens = lib.mkOption {
-          type = lib.types.listOf (lib.types.submodule {
+          type = lib.types.attrsOf (lib.types.submodule {
             options = {
               default_screen = lib.mkOption {
                 type = lib.types.str;
@@ -105,7 +115,7 @@ in {
 
               windows = lib.mkOption {
                 description = "Windows within this workspace";
-                type = lib.types.listOf (lib.types.submodule {
+                type = lib.types.attrsOf (lib.types.submodule {
                   options = {
                     preferred_screen = lib.mkOption {
                       type = lib.types.str;
@@ -126,13 +136,14 @@ in {
     ];
 
     home.file.".panmuphled.json".text = builtins.toJSON {
-      initial_workspaces = config.panmuphle.initial_workspaces;
+      initial_workspaces = config.panmuphle.initialWorkspaces;
 
       screens = config.panmuphle.screens;
 
-      workspaces = mergeWorkspaceLists
+      workspaces = mergeWorkspaceScreens
         config.panmuphle.workspaces
-        config.panmuphle.workspaceScreens;
+        config.panmuphle.workspaceScreens
+        config.panmuphle.globalDefaultScreen;
     };
   };
 }
