@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./panmuphle
+    ./applications/panmuphle
   ];
 }
