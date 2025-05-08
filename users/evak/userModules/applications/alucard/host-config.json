@@ -15,6 +15,11 @@
             "buildHosts": [
                 "homeserver1"
             ]
+        },
+        {
+            "hostname": "tablet",
+            "macAddress": "22:C3:5E:E5:81:F8",
+            "architecture": "aarch64-linux"
         }
     ]
 }
