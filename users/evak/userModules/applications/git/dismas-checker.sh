@@ -5,3 +5,6 @@ else
     echo "Please run this command using the dismas utility"
     exit 1
 fi
+
+echo "Running pre-commmit utility"
+pre-commit
