@@ -5,7 +5,7 @@
   config = {
     home.packages = with pkgs; [
       panmuphle
-      vscodium
+      # vscodium
       nyxt
       libreoffice
       obsidian
