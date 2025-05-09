@@ -14,7 +14,6 @@
     ./dismas
     ./keepassxc
     ./gtk
-    ./better-discord
     ./rofi
     ./discord
     ./vscodium
