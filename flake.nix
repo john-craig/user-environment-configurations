@@ -16,17 +16,17 @@
     nixpkgs-apocrypha.url = "git+https://gitea.chiliahedron.wtf/chiliahedron/nixpkgs-apocrypha";
   };
 
-  outputs = { self, nixpkgs, nixGL, home-manager, nixpkgs-apocrypha, ... }: 
-    let 
+  outputs = { self, nixpkgs, nixGL, home-manager, nixpkgs-apocrypha, ... }:
+    let
       mkUserConfig = username: {
-        imports = [ 
+        imports = [
           ./modules
           ./users/${username}/home.nix
         ];
       };
       mkHomeConfig = homeDef: home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { 
-          system = "${homeDef.arch}"; 
+        pkgs = import nixpkgs {
+          system = "${homeDef.arch}";
           overlays = [ nixGL.overlay ];
         };
 
@@ -36,7 +36,8 @@
           ./hosts/${homeDef.host}
         ];
       };
-    in {
+    in
+    {
       nixosModules = {
         "display" = mkUserConfig "display";
         "service" = mkUserConfig "service";
@@ -55,5 +56,5 @@
           arch = "x86_64-linux";
         };
       };
-  };
+    };
 }

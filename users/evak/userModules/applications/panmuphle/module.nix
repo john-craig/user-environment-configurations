@@ -1,31 +1,39 @@
-{ pkgs, lib, config, ... }: let
+{ pkgs, lib, config, ... }:
+let
   mergeWorkspaceScreens = (
     workspaces: workspaceScreens: globalDefaultScreen:
-      map (workspace:
-        let
-          wsName = workspace.name;
-          wsScreenConf = lib.attrByPath [wsName] null workspaceScreens;
-          defaultScreen = if wsScreenConf != null
-                          then wsScreenConf.default_screen
-                          else globalDefaultScreen;
+      map
+        (workspace:
+          let
+            wsName = workspace.name;
+            wsScreenConf = lib.attrByPath [ wsName ] null workspaceScreens;
+            defaultScreen =
+              if wsScreenConf != null
+              then wsScreenConf.default_screen
+              else globalDefaultScreen;
 
-          updatedWindows = lib.imap0 (i: win:
-            let
-              preferredScreen = if wsScreenConf != null
-                                then lib.attrByPath ["windows" (toString i) "preferred_screen"] defaultScreen wsScreenConf
-                                else defaultScreen;
-            in
-              win // { preferred_screen = preferredScreen; }
-          ) workspace.windows;
+            updatedWindows = lib.imap0
+              (i: win:
+                let
+                  preferredScreen =
+                    if wsScreenConf != null
+                    then lib.attrByPath [ "windows" (toString i) "preferred_screen" ] defaultScreen wsScreenConf
+                    else defaultScreen;
+                in
+                win // { preferred_screen = preferredScreen; }
+              )
+              workspace.windows;
 
-        in
+          in
           workspace // {
             default_screen = defaultScreen;
             windows = updatedWindows;
           }
-      ) workspaces
+        )
+        workspaces
   );
-in {
+in
+{
   options = {
     panmuphle = {
       enable = lib.mkEnableOption "configuration Panmuphle window organizer";
@@ -60,71 +68,71 @@ in {
 
       workspaces = lib.mkOption {
         type = lib.types.listOf (lib.types.submodule {
-            options = {
-              name = lib.mkOption {
-                type = lib.types.str;
-                description = "Name of the workspaces";
-              };
-
-              windows = lib.mkOption {
-                description = "Windows within this workspace";
-                type = lib.types.listOf (lib.types.submodule {
-                  options = {
-                    displayed_default = lib.mkOption {
-                      type = lib.types.bool;
-                      description = "Whether this window is displayed when the workspace is focused";
-                    };
-
-                    applications = lib.mkOption {
-                      description = "Applications present in this window";
-                      type = lib.types.listOf (lib.types.submodule {
-                        options = {
-                          name = lib.mkOption {
-                            type = lib.types.str;
-                            description = "Name of the application";
-                          };
-
-                          exec = lib.mkOption {
-                            type = lib.types.str;
-                            description = "Executable to start application";
-                          };
-
-                          focused_default = lib.mkOption {
-                            type = lib.types.bool;
-                            description = "Whether this application is focused when the window is focused";
-                          };
-                        };
-                      });
-                    };
-                  };
-                });
-              };
+          options = {
+            name = lib.mkOption {
+              type = lib.types.str;
+              description = "Name of the workspaces";
             };
+
+            windows = lib.mkOption {
+              description = "Windows within this workspace";
+              type = lib.types.listOf (lib.types.submodule {
+                options = {
+                  displayed_default = lib.mkOption {
+                    type = lib.types.bool;
+                    description = "Whether this window is displayed when the workspace is focused";
+                  };
+
+                  applications = lib.mkOption {
+                    description = "Applications present in this window";
+                    type = lib.types.listOf (lib.types.submodule {
+                      options = {
+                        name = lib.mkOption {
+                          type = lib.types.str;
+                          description = "Name of the application";
+                        };
+
+                        exec = lib.mkOption {
+                          type = lib.types.str;
+                          description = "Executable to start application";
+                        };
+
+                        focused_default = lib.mkOption {
+                          type = lib.types.bool;
+                          description = "Whether this application is focused when the window is focused";
+                        };
+                      };
+                    });
+                  };
+                };
+              });
+            };
+          };
         });
         default = [ ];
         description = "Workspaces for Panmuphle";
       };
 
       workspaceScreens = lib.mkOption {
-          type = lib.types.attrsOf (lib.types.submodule {
-            options = {
-              default_screen = lib.mkOption {
-                type = lib.types.str;
-                description = "Screen name or alias where workspace windows are opened by default";
-              };
-
-              windows = lib.mkOption {
-                description = "Windows within this workspace";
-                type = lib.types.attrsOf (lib.types.submodule {
-                  options = {
-                    preferred_screen = lib.mkOption {
-                      type = lib.types.str;
-                      description = "Screen name or alias this window will occupy until another window is focused there";
-                    };
-                  };
-                });
-              };
+        type = lib.types.attrsOf (lib.types.submodule {
+          options = {
+            default_screen = lib.mkOption {
+              type = lib.types.str;
+              description = "Screen name or alias where workspace windows are opened by default";
             };
+
+            windows = lib.mkOption {
+              description = "Windows within this workspace";
+              type = lib.types.attrsOf (lib.types.submodule {
+                options = {
+                  preferred_screen = lib.mkOption {
+                    type = lib.types.str;
+                    description = "Screen name or alias this window will occupy until another window is focused there";
+                  };
+                };
+              });
+            };
+          };
         });
       };
     };

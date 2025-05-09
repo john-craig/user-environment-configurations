@@ -3,9 +3,9 @@
 
   programs.zsh = {
     enable = true;
-    
+
     historySubstringSearch.enable = false;
-    
+
     completionInit = ''
       autoload -U compinit && compinit
     '';

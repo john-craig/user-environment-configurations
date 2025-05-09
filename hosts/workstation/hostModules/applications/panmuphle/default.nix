@@ -1,4 +1,5 @@
-{ config, pkgs, lib, ... }: let 
+{ config, pkgs, lib, ... }:
+let
 in {
   panmuphle = {
     globalDefaultScreen = "RIGHT_MONITOR";
@@ -33,26 +34,26 @@ in {
     ];
 
     workspaceScreens = [
-        "browsing" = {
-          default_screen = "RIGHT_MONITOR";
-          windows."0".preferred_screen = "LEFT_MONITOR";
-        };
-        "studying" = {
-          default_screen = "LEFT_MONITOR";
-          windows."0".preferred_screen = "RIGHT_MONITOR";
-        };
-        "social" = {
-          default_screen = "RIGHT_MONITOR";
-          windows."0".preferred_screen = "LEFT_MONITOR";
-        };
-        "development" = {
-          default_screen = "RIGHT_MONITOR";
-          windows."0".preferred_screen = "LEFT_MONITOR";
-        };
-        "gaming:feed-the-beast" = {
-          default_screen = "LEFT_MONITOR";
-          windows."0".preferred_screen = "RIGHT_MONITOR";
-        }
-      ];
+      "browsing" = {
+      default_screen = "RIGHT_MONITOR";
+      windows."0".preferred_screen = "LEFT_MONITOR";
+    };
+      "studying" = {
+      default_screen = "LEFT_MONITOR";
+      windows."0".preferred_screen = "RIGHT_MONITOR";
+    };
+      "social" = {
+      default_screen = "RIGHT_MONITOR";
+      windows."0".preferred_screen = "LEFT_MONITOR";
+    };
+      "development" = {
+      default_screen = "RIGHT_MONITOR";
+      windows."0".preferred_screen = "LEFT_MONITOR";
+    };
+      "gaming:feed-the-beast" = {
+      default_screen = "LEFT_MONITOR";
+      windows."0".preferred_screen = "RIGHT_MONITOR";
+    }
+    ];
   };
 }

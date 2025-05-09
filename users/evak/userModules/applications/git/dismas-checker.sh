@@ -7,4 +7,4 @@ else
 fi
 
 echo "Running pre-commmit utility"
-pre-commit
+pre-commit run
