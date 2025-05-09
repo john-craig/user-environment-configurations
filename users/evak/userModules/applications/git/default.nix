@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 {
+  home.packages = with pkgs; [
+    pre-commit
+  ];
+
   programs.git = {
     enable = true;
 
