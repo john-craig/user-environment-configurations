@@ -33,27 +33,27 @@ in {
       }
     ];
 
-    workspaceScreens = [
+    workspaceScreens = {
       "browsing" = {
-      default_screen = "RIGHT_MONITOR";
-      windows."0".preferred_screen = "LEFT_MONITOR";
+        default_screen = "RIGHT_MONITOR";
+        windows."0".preferred_screen = "LEFT_MONITOR";
+      };
+        "studying" = {
+        default_screen = "LEFT_MONITOR";
+        windows."0".preferred_screen = "RIGHT_MONITOR";
+      };
+        "social" = {
+        default_screen = "RIGHT_MONITOR";
+        windows."0".preferred_screen = "LEFT_MONITOR";
+      };
+        "development" = {
+        default_screen = "RIGHT_MONITOR";
+        windows."0".preferred_screen = "LEFT_MONITOR";
+      };
+        "gaming:feed-the-beast" = {
+        default_screen = "LEFT_MONITOR";
+        windows."0".preferred_screen = "RIGHT_MONITOR";
+      };
     };
-      "studying" = {
-      default_screen = "LEFT_MONITOR";
-      windows."0".preferred_screen = "RIGHT_MONITOR";
-    };
-      "social" = {
-      default_screen = "RIGHT_MONITOR";
-      windows."0".preferred_screen = "LEFT_MONITOR";
-    };
-      "development" = {
-      default_screen = "RIGHT_MONITOR";
-      windows."0".preferred_screen = "LEFT_MONITOR";
-    };
-      "gaming:feed-the-beast" = {
-      default_screen = "LEFT_MONITOR";
-      windows."0".preferred_screen = "RIGHT_MONITOR";
-    }
-    ];
   };
 }
