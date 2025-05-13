@@ -171,8 +171,6 @@
         user = "aur";
         identityFile = "~/.ssh/aur";
       };
-
-
     };
   };
 }
