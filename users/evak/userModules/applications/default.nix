@@ -3,6 +3,7 @@
   imports = [
     ./alucard
     ./git
+    ./paru
     ./nix
     ./nyxt
     ./user-dirs
