@@ -4,5 +4,7 @@
   imports =
     [
       ./shell
+      
+      ./networking/networkMonitor
     ];
 }

@@ -1,39 +1,4 @@
-{ config, pkgs, ... }: 
-let 
-  checkHost = pkgs.writeShellScriptBin "check-host" ''
-    #!/usr/bin/env bash
-    IP_ADDRESS="$1"
-    SSH_PORT="''${2:-22}"
-
-    # Ping the host silently with a 1-second timeout
-    if ! ping -c 1 -W 1 "$IP_ADDRESS" &> /dev/null; then
-        exit 1
-    fi
-
-    # Check if there is an existing host key in known_hosts
-    HOST_PATTERN=$(ssh-keygen -F "$IP_ADDRESS" 2>/dev/null)
-
-    if [[ -z "$HOST_PATTERN" ]]; then
-        # No stored host key, return 0 as per your requirements
-        exit 0
-    fi
-
-    # Retrieve the current host key
-    CURRENT_HOST_KEY=$(ssh-keyscan -p "$SSH_PORT" "$IP_ADDRESS" 2>/dev/null)
-
-    if [[ -z "$CURRENT_HOST_KEY" ]]; then
-        # Could not retrieve host key, return non-zero
-        exit 1
-    fi
-
-    # Compare the retrieved host key against the stored one
-    if ssh-keygen -F "$IP_ADDRESS" | grep -Fq "$CURRENT_HOST_KEY"; then
-        exit 0
-    else
-        exit 1
-    fi
-  '';
-in {
+{ config, pkgs, ... }: {
   home.packages = with pkgs; [
     totp-port-knockd-rs
   ];
@@ -66,14 +31,8 @@ in {
         identityFile = "~/.ssh/pxe_server";
       };
 
-      "homeserver1-local" = {
-        match = "host homeserver1 exec \"${checkHost}/bin/check-host 192.168.1.8\"";
+      "homeserver1" = {
         hostname = "192.168.1.8";
-      };
-
-      "homeserver1-remote" = {
-        host = "homeserver1";
-        hostname = "10.100.0.2";
         user = "service";
         identityFile = "~/.ssh/homeserver1";
       };
@@ -201,14 +160,8 @@ in {
         identityFile = "~/.ssh/github";
       };
 
-      "gitea.chiliahedron.wtf-local" = {
-        match = "host gitea.chiliahedron.wtf exec \"${checkHost}/bin/check-host 192.168.1.8\"";
+      "gitea.chiliahedron.wtf" = {
         hostname = "192.168.1.8";
-      };
-
-      "gitea.chiliahedron.wtf-remote" = {
-        host = "gitea.chiliahedron.wtf";
-        hostname = "10.100.0.2";
         port = 6022;
         identityFile = "~/.ssh/gitea";
       };
