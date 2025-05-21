@@ -1,8 +1,15 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    # package = pkgs.vscodium;
+    package = pkgs.vscodium.overrideAttrs (old: rec {
+      version = "1.100.2";
+      src = builtins.fetchurl {
+        url = "https://github.com/VSCodium/vscodium/releases/download/1.100.23258/VSCodium-linux-x64-1.100.23258.tar.gz";
+        sha256 = "sha256:0fa8bk110jad8hh33517zqj4k1wcla9h50df4c5bxvp50s0h5wgb";
+      };
+    });
 
     profiles.default = {
       extensions = [
