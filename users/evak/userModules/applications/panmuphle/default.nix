@@ -77,7 +77,7 @@
               "applications" = [
                 {
                   "name" = "code";
-                  "exec" = "${pkgs.vscodium}/bin/codium --ozone-platform-hint=wayland --disable-gpu --no-sandbox";
+                  "exec" = "/home/evak/.nix-profile/bin/codium --ozone-platform-hint=wayland --disable-gpu --no-sandbox";
                   "focused_default" = true;
                 }
               ];
