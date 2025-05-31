@@ -2,5 +2,6 @@
 {
   imports = [
     ./receiptScanner
+    ./labelPrinter
   ];
 }

@@ -6,4 +6,5 @@
   ];
 
   receiptScanner.enable = true;
+  labelPrinter.enable = true;
 }
