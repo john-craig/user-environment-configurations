@@ -96,11 +96,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1746283972,
-        "narHash": "sha256-0umlElDLo5jGfroOU4Er7PYg2D7BjXawa3cFRvxpg7w=",
+        "lastModified": 1747738220,
+        "narHash": "sha256-zBUYLWMHO7FmIj4rGZmyP60eNmcCaGENdZ+rwffg7QE=",
         "ref": "refs/heads/main",
-        "rev": "4dc9663a89cb00bbc67ba75435b528f862cb7dcb",
-        "revCount": 89,
+        "rev": "13b2c15ef7c398fd1e90b0f6ef1488daefcc20a0",
+        "revCount": 95,
         "type": "git",
         "url": "https://gitea.chiliahedron.wtf/chiliahedron/nixpkgs-apocrypha"
       },
@@ -111,11 +111,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1740367490,
-        "narHash": "sha256-WGaHVAjcrv+Cun7zPlI41SerRtfknGQap281+AakSAw=",
+        "lastModified": 1747327360,
+        "narHash": "sha256-LSmTbiq/nqZR9B2t4MRnWG7cb0KVNU70dB7RT4+wYK4=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "0196c0175e9191c474c26ab5548db27ef5d34b05",
+        "rev": "e06158e58f3adee28b139e9c2bcfcc41f8625b46",
         "type": "github"
       },
       "original": {

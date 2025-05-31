@@ -175,7 +175,6 @@
           "$mainMod SHIFT, RETURN, exec, $faustrollctl create-date-entry"
           "$mainMod SHIFT, N, exec, $faustrollctl create-project-task"
           "$mainMod SHIFT, M, exec, $faustrollctl modify-project-task"
-          "$mainMod SHIFT, D, exec, $faustrollctl remove-project-task"
         ];
 
         windowrulev2 = [
