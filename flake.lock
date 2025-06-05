@@ -96,11 +96,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1748652078,
-        "narHash": "sha256-p/TDLPaaeSBV5zvrjqKoi2qWstsMZd6hcgUAS9VTt8g=",
+        "lastModified": 1749090704,
+        "narHash": "sha256-+euyNNW1GSwrSkhlbpQronXJD+jA9pUVu4FOwc+yD8c=",
         "ref": "refs/heads/main",
-        "rev": "f89efa8d2f292f53d94c2b3182ab9604433672fe",
-        "revCount": 97,
+        "rev": "662f075d2082c479600b5b539935c50ebc346157",
+        "revCount": 98,
         "type": "git",
         "url": "https://gitea.chiliahedron.wtf/chiliahedron/nixpkgs-apocrypha"
       },
@@ -111,16 +111,16 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1747327360,
-        "narHash": "sha256-LSmTbiq/nqZR9B2t4MRnWG7cb0KVNU70dB7RT4+wYK4=",
+        "lastModified": 1748889542,
+        "narHash": "sha256-Hb4iMhIbjX45GcrgOp3b8xnyli+ysRPqAgZ/LZgyT5k=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "e06158e58f3adee28b139e9c2bcfcc41f8625b46",
+        "rev": "10d7f8d34e5eb9c0f9a0485186c1ca691d2c5922",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-unstable",
+        "ref": "release-25.05",
         "repo": "nixpkgs",
         "type": "github"
       }
