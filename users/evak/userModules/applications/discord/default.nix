@@ -14,6 +14,7 @@
     # Install or reinstall BetterDiscord into Discord
     if command -v betterdiscordctl >/dev/null; then
       ${pkgs.betterdiscordctl}/bin/betterdiscordctl install || true
+      ${pkgs.betterdiscordctl}/bin/betterdiscordctl reinstall || true
     else
       echo "betterdiscordctl not found in PATH!"
     fi

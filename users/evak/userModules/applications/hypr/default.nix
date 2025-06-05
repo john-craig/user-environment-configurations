@@ -13,7 +13,7 @@
     # hyprshot
 
     nixgl.auto.nixGLDefault
-    nixgl.auto.nixGLNvidia
+    # nixgl.auto.nixGLNvidia
     # glxinfo
   ];
 
@@ -41,7 +41,7 @@
 
         exec-once = [
           "waybar & hyprpaper"
-          "sleep 2 && ~/.nix-profile/bin/panmuphled --conf ~/.panmuphled.json"
+          "sleep 1 && ~/.nix-profile/bin/panmuphled --conf ~/.panmuphled.json"
         ];
 
         input = {
@@ -111,7 +111,16 @@
           disable_hyprland_logo = false;
         };
 
-        bind = [
+        bind = let 
+          softRestartPanmuphled = pkgs.writeShellScriptBin "soft-restart-panmuphled" ''
+            ~/.nix-profile/bin/panmuphlectl suspend
+            ~/.nix-profile/bin/panmuphled --conf ~/.panmuphled.json --restore &
+          '';
+          hardRestartPanmuphled = pkgs.writeShellScriptBin "hard-restart-panmuphled" ''
+            ~/.nix-profile/bin/panmuphlectl terminate
+            ~/.nix-profile/bin/panmuphled --conf ~/.panmuphled.json &
+          '';
+        in [
           "$mainMod, RETURN, exec, wezterm"
           "$mainMod, C, killactive,"
           "$mainMod, M, exit,"
@@ -164,8 +173,8 @@
           "$mainMod ALT, down, exec, $panmuphlectl switch-workspace --direction DOWN"
           "$mainMod ALT SHIFT, left, exec, $panmuphlectl move-window --screen LEFT_MONITOR"
           "$mainMod ALT SHIFT, right, exec, $panmuphlectl move-window --screen RIGHT_MONITOR"
-          "$mainMod ALT, r, exec, $panmuphlectl suspend && ~/.nix-profile/bin/panmuphled --conf ~/.panmuphled.json --restore"
-          "$mainMod ALT SHIFT, r, exec, $panmuphlectl terminate || ~/.nix-profile/bin/panmuphled --conf ~/.panmuphled.json"
+          "$mainMod ALT, r, exec, ${softRestartPanmuphled}/bin/soft-restart-panmuphled"
+          "$mainMod ALT SHIFT, r, exec, ${hardRestartPanmuphled}/bin/hard-restart-panmuphled"
           "$mainMod, S, togglespecialworkspace, magic"
           "$mainMod SHIFT, S, movetoworkspace, special:magic"
           "$mainMod, mouse_down, workspace, e+1"

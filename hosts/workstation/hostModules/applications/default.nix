@@ -3,5 +3,6 @@
   imports = [
     ./panmuphle
     ./pipewire
+    ./nix
   ];
 }

@@ -62,7 +62,8 @@
               "applications" = [
                 {
                   "name" = "discord";
-                  "exec" = "/usr/bin/discord --ozone-platform=wayland --disable-gpu --no-sandbox";
+                  "exec" = "/home/evak/.nix-profile/bin/discord --ozone-platform=wayland --disable-gpu --no-sandbox";
+                  # "exec" = "/usr/bin/discord --ozone-platform=wayland --disable-gpu --no-sandbox";
                   "focused_default" = true;
                 }
               ];

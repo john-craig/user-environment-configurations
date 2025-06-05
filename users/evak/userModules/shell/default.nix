@@ -18,7 +18,7 @@
         source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
 
         # Fire up TMUX
-        if [ "$TMUX" = "" ]; then tmux; fi
+        if [ "$TMUX" = "" ]; then exec tmux; fi
       '';
     };
 
