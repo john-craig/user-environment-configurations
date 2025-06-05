@@ -16,5 +16,6 @@ rsync -av \
 ls $LOCAL_CACHE_DIR > $LOCAL_CACHE_LIST
 ssh -i $CACHER_ID_PATH cacher@pxe_server "mkdir -p $REMOTE_CACHE_DIR"
 scp -i $CACHER_ID_PATH $LOCAL_CACHE_LIST cacher@pxe_server:$REMOTE_CACHE_DIR/curr
+ssh -i $CACHER_ID_PATH cacher@pxe_server "nohup dustman > /tmp/dustman.log 2>&1 &"
 
 rm $LOCAL_CACHE_LIST
