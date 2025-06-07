@@ -12,6 +12,7 @@
 
       nixgl.nixGLIntel
       godot_4
+      gimp
       # davinci-resolve
     ];
 
@@ -119,6 +120,21 @@
                 {
                   "name" = "godot";
                   "exec" = "${pkgs.nixgl.nixGLIntel}/bin/nixGLIntel ${pkgs.godot_4}/bin/godot4 --display-driver wayland";
+                  "focused_default" = true;
+                }
+              ];
+            }
+          ];
+        }
+        {
+          "name" = "image-editing";
+          "windows" = [
+            {
+              "displayed_default" = true;
+              "applications" = [
+                {
+                  "name" = "gimp";
+                  "exec" = "${pkgs.gimp}/bin/gimp";
                   "focused_default" = true;
                 }
               ];
