@@ -22,7 +22,7 @@
     GALLIPEDAL_MODULE = "$HOME/programming/by_category/selfhosting/gallipedal-module";
   };
 
-  programs.zsh.initExtra =
+  programs.zsh.initContent =
     let
       home_dirs = {
         documents = [

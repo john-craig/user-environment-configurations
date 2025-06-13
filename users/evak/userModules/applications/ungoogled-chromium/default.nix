@@ -24,6 +24,12 @@
           sha256 = "sha256:1mxz316fd0z69x2s6bbzi9h4d0id49hgag8ip16y30pcmx2i8sc0";
           version = "5.0.178";
         })
+        (createChromiumExtension {
+          # adblock plus
+          id = "cfhdojbkjhnklbpkdaibdccddilifddb";
+          sha256 = "sha256:1jc6r4hvasri1vwyd08gr9rlfddvfl18nnc81x04fnyahp1gafy7";
+          version = "4.22.1";
+        })
         # (createChromiumExtension {
         #   # keepassxc
         #   id = "oboonakemofpalcgghocfoadofidjkkk";
