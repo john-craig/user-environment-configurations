@@ -66,6 +66,12 @@
           sha256 = "sha256:1g3bpgqx05qb53z13592cjkrkz1dnm2njrz0ispx3r0p321acwl3";
           version = "3.98.1";
         })
+        (createChromiumExtension {
+          # adblocker for youtube
+          id = "cmedhionkhpnakcndndgjdbohmhepckk";
+          sha256 = "sha256:1qbz56w7rwhcbsb9mg3n3fsgcqz4vxkww38jpcnf67z16zbpk1y5";
+          version = "7.0.4";
+        })
       ];
     commandLineArgs = [
       "--no-sandbox"
