@@ -12,7 +12,7 @@ in
   };
 
   # Scrape all that nonsense off the front of our PATH
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
     PATH="${builtins.elemAt paths 0}''${PATH#*${builtins.elemAt paths 0}}"
   '';
 }

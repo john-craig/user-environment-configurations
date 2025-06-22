@@ -6,11 +6,11 @@
     home.packages = with pkgs; [
       panmuphle
       # vscodium
-      nyxt
+      # nyxt
       libreoffice
       obsidian
 
-      nixgl.nixGLIntel
+      nixgl.auto.nixGLDefault
       godot_4
       gimp
       # davinci-resolve
@@ -33,7 +33,7 @@
               "applications" = [
                 {
                   "name" = "chromium";
-                  "exec" = "/home/evak/.nix-profile/bin/chromium";
+                  "exec" = "${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL ${config.programs.chromium.package}/bin/chromium";
                   "focused_default" = true;
                 }
               ];
@@ -48,7 +48,7 @@
               "applications" = [
                 {
                   "name" = "obsidian";
-                  "exec" = "${pkgs.obsidian}/bin/obsidian --ozone-platform=wayland --disable-gpu --no-sandbox";
+                  "exec" = "${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL ${pkgs.obsidian}/bin/obsidian --ozone-platform=wayland --no-sandbox";
                   "focused_default" = true;
                 }
               ];
@@ -63,8 +63,7 @@
               "applications" = [
                 {
                   "name" = "discord";
-                  "exec" = "/home/evak/.nix-profile/bin/discord --ozone-platform=wayland --disable-gpu --no-sandbox";
-                  # "exec" = "/usr/bin/discord --ozone-platform=wayland --disable-gpu --no-sandbox";
+                  "exec" = "${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL ${pkgs.discord}/bin/discord --ozone-platform=wayland --no-sandbox";
                   "focused_default" = true;
                 }
               ];
@@ -79,7 +78,7 @@
               "applications" = [
                 {
                   "name" = "code";
-                  "exec" = "/home/evak/.nix-profile/bin/codium --ozone-platform-hint=wayland --disable-gpu --no-sandbox";
+                  "exec" = "${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL ${config.programs.vscode.package}/bin/codium --ozone-platform-hint=wayland --no-sandbox";
                   "focused_default" = true;
                 }
               ];
@@ -119,7 +118,7 @@
               "applications" = [
                 {
                   "name" = "godot";
-                  "exec" = "${pkgs.nixgl.nixGLIntel}/bin/nixGLIntel ${pkgs.godot_4}/bin/godot4 --display-driver wayland";
+                  "exec" = "${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL ${pkgs.godot_4}/bin/godot4 --display-driver wayland";
                   "focused_default" = true;
                 }
               ];
@@ -134,7 +133,7 @@
               "applications" = [
                 {
                   "name" = "gimp";
-                  "exec" = "${pkgs.gimp}/bin/gimp";
+                  "exec" = "${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL ${pkgs.gimp}/bin/gimp";
                   "focused_default" = true;
                 }
               ];

@@ -5,7 +5,7 @@
     ./git
     ./paru
     ./nix
-    ./nyxt
+    # ./nyxt
     ./user-dirs
     ./hypr
     ./wezterm

@@ -33,10 +33,46 @@ in
 {
   programs.vscode = {
     enable = true;
-    # package = pkgs.vscodium;
     package = vscodium;
 
     profiles.default = {
+      keybindings = [
+        {
+          key = "ctrl+shift+x";
+          command = "-workbench.view.extensions";
+          when = "viewContainer.workbench.view.extensions.enabled";
+        }
+        {
+          key = "ctrl+shift+left";
+          command = "-workbench.action.terminal.resizePaneLeft";
+          when = "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported";
+        }
+        {
+          key = "ctrl+shift+right";
+          command = "-workbench.action.terminal.resizePaneRight";
+          when = "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported";
+        }
+      ];
+
+      userSettings = {
+        "workbench.colorTheme" = "SynthWave '84";
+        "security.workspace.trust.untrustedFiles" = "open";
+        "terminal.integrated.allowChords" = false;
+        "terminal.integrated.defaultProfile.linux" = "zsh";
+        "sshfs.configs" = [
+          {
+            name = "homeserver1-homepage";
+            host = "192.168.1.8";
+            root = "/srv/container/hompage/config";
+            username = "service";
+            privateKeyPath = "\${env:HOME}/.ssh/homeserver1";
+            sftpSudo = true;
+          }
+        ];
+        "editor.fontFamily" = "'JetBrains Mono', 'monospace', monospace";
+        "editor.fontLigatures" = true;
+      };
+
       extensions = [
         pkgs.vscode-extensions.wholroyd.jinja
         # pkgs.vscode-extensions.wakatime.vscode-wakatime
@@ -48,23 +84,9 @@ in
     };
   };
 
-  # home.activation.neondreams = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-  #   echo ">> Installing Neon Dreams..."
-
-  #   EXT_DIR=$(find $HOME/.vscode-oss/extensions -name 'robbowen.synthwave-vscode-*' | sort | tail -n 1)
-  #   NEON="$EXT_DIR/neon.css"
-  #   TARGET=$(find ${vscodium}/lib/vscode/resources/app/out/vs/workbench/ -name workbench.desktop.main.css)
-  #   echo "${vscodium}/lib/vscode/resources/app/out/vs/workbench/"
-  #   echo $NEON
-  #   echo $TARGET
-
-  #   echo "Patching Synthwave '84 Neon..."
-  #   # cp "$TARGET" "$TARGET.bak"
-  #   cat "$NEON" >> "$TARGET"
-  # '';
 
   home.file = {
-    ".config/VSCodium/User/keybindings.json".source = ./keybindings.json;
-    ".config/VSCodium/User/settings.json".source = ./settings.json;
+    # ".config/VSCodium/User/keybindings.json".source = ./keybindings.json;
+    # ".config/VSCodium/User/settings.json".source = ./settings.json;
   };
 }

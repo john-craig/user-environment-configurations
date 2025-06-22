@@ -3,19 +3,30 @@
   home.packages = with pkgs; [
     # hyprland
     # hypridle
-    # hyprpaper
     # hyprlock
     # hyprcursor
-
-    # wezterm
-    # waybar
     # hyprpaper
     # hyprshot
 
+    faustroll
+    # wezterm
+    # waybar
+
     nixgl.auto.nixGLDefault
     # nixgl.auto.nixGLNvidia
-    # glxinfo
   ];
+
+  home.sessionVariables = {
+    LIBSEAT_BACKEND = "logind";
+    XCURSOR_SIZE = "24";
+    HYPRCURSOR_SIZE = "24";
+    AQ_DRM_DEVICES = "/dev/dri/card1";
+
+    # LIBGL_DRIVERS_PATH = "/usr/lib/dri";
+    # GBM_BACKENDS_PATH = "/usr/lib/gbm";
+    # XDG_SESSION_TYPE = "wayland";
+    # WLR_DRM_DEVICES = "/dev/dri/card2";
+  };
 
   wayland.windowManager = {
     hyprland = {
@@ -23,9 +34,15 @@
       xwayland.enable = true;
       settings = {
         "$terminal" = "wezterm";
-        "$panmuphlectl" = "~/.nix-profile/bin/panmuphlectl";
-        "$faustrollctl" = "~/.nix-profile/bin/faustrollctl";
+        "$panmuphled" = "${pkgs.panmuphle}/bin/panmuphled";
+        "$panmuphlectl" = "${pkgs.panmuphle}/bin/panmuphlectl";
+        "$faustrollctl" = "${pkgs.faustroll}/bin/faustrollctl";
         "$mainMod" = "SUPER";
+
+        debug = {
+          disable_logs = false;
+          enable_stdout_logs = true;
+        };
 
         monitor = [
           "DP-1,1920x1080,1920x0,auto"
@@ -33,15 +50,16 @@
         ];
 
         env = [
-          "XCURSOR_SIZE,24"
-          "HYPRCURSOR_SIZE,24"
           "XDG_SESSION_TYPE,wayland"
-          # "AQ_DRM_DEVICES,/dev/dri/card2"
+
+          "AQ_TRACE,1"
+          "HYPRLAND_TRACE,1"
         ];
 
         exec-once = [
-          "waybar & hyprpaper"
-          "sleep 1 && ~/.nix-profile/bin/panmuphled --conf ~/.panmuphled.json"
+          "waybar"
+          "hyprpaper"
+          "sleep 1 && $panmuphled --conf ~/.panmuphled.json"
         ];
 
         input = {
@@ -113,12 +131,12 @@
 
         bind = let 
           softRestartPanmuphled = pkgs.writeShellScriptBin "soft-restart-panmuphled" ''
-            ~/.nix-profile/bin/panmuphlectl suspend
-            ~/.nix-profile/bin/panmuphled --conf ~/.panmuphled.json --restore &
+            ${pkgs.panmuphle}/bin/panmuphlectl suspend
+            ${pkgs.panmuphle}/bin/panmuphled --conf ~/.panmuphled.json --restore &
           '';
           hardRestartPanmuphled = pkgs.writeShellScriptBin "hard-restart-panmuphled" ''
-            ~/.nix-profile/bin/panmuphlectl terminate
-            ~/.nix-profile/bin/panmuphled --conf ~/.panmuphled.json &
+            ${pkgs.panmuphle}/bin/panmuphlectl terminate
+            ${pkgs.panmuphle}/bin/panmuphled --conf ~/.panmuphled.json &
           '';
         in [
           "$mainMod, RETURN, exec, wezterm"
@@ -180,7 +198,6 @@
           "$mainMod, mouse_down, workspace, e+1"
           "$mainMod, mouse_up, workspace, e-1"
           "$mainMod, mouse:272, movewindow"
-          # "$mainMod, mouse:273, resizewindow"
           "$mainMod SHIFT, RETURN, exec, $faustrollctl create-date-entry"
           "$mainMod SHIFT, N, exec, $faustrollctl create-project-task"
           "$mainMod SHIFT, M, exec, $faustrollctl modify-project-task"
@@ -198,21 +215,10 @@
     
   };
 
-  home.sessionVariables = {
-    XCURSOR_SIZE = "24";
-    HYPRCURSOR_SIZE = "24";
-    # GBM_BACKENDS_PATH = "/usr/lib/gbm";
-    # LIBGL_DRIVERS_PATH = "/usr/lib/gbm";
-    # XDG_SESSION_TYPE = "wayland";
-    # WLR_DRM_DEVICES = "/dev/dri/card2";
-  };
-  # home.sessionVariables = {
-  # };
-
   home.file = {
     ".config/hypr/hyprpaper.conf".source = ./hyprpaper.conf;
     # ".config/hypr/hyprland.conf".source = ./hyprland.conf;
-    ".config/hypr/hyprlock.conf".source = ./hyprlock.conf;
+    # ".config/hypr/hyprlock.conf".source = ./hyprlock.conf;
     # ".config/hypr/hypridle.conf".source = ./hypridle.conf;
   };
 }

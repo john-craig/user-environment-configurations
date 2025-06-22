@@ -6,13 +6,14 @@
     ./path
     ./plugins
     ./variables
+    ./profile
   ];
 
   programs = {
     zsh = {
       enable = true;
 
-      initExtra = ''
+      initContent = ''
         # This is stupid but it works
         unset __HM_SESS_VARS_SOURCED
         source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
