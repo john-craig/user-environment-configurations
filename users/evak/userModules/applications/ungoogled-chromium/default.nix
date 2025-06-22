@@ -1,8 +1,26 @@
-{ config, pkgs, lib, ... }:
-{
+{ config, pkgs, lib, ... }: let
+  chromium = pkgs.ungoogled-chromium.overrideAttrs (old: rec {
+    buildCommand = let
+      oldStr = ''
+        if [ -x "/run/wrappers/bin/${old.passthru.sandboxExecutableName}" ]
+        then
+          export CHROME_DEVEL_SANDBOX="/run/wrappers/bin/${old.passthru.sandboxExecutableName}"
+        else
+          export CHROME_DEVEL_SANDBOX="$sandbox/bin/${old.passthru.sandboxExecutableName}"
+        fi
+      '';
+      newStr = ''export CHROME_DEVEL_SANDBOX=/usr/lib/chromium/chrome-sandbox'';
+    in
+      builtins.replaceStrings [oldStr] [newStr] old.buildCommand;
+    
+    # buildCommand = old.buildCommand + ''
+    #   chmod 4755 $(readlink "$sandbox")/bin/${old.passthru.sandboxExecutableName}
+    # '';
+  });
+in {
   programs.chromium = {
     enable = true;
-    package = pkgs.ungoogled-chromium;
+    package = chromium;
     extensions =
       let
         createChromiumExtensionFor = browserVersion: { id, sha256, version }:
@@ -15,7 +33,7 @@
             };
             inherit version;
           };
-        createChromiumExtension = createChromiumExtensionFor (lib.versions.major pkgs.ungoogled-chromium.version);
+        createChromiumExtension = createChromiumExtensionFor (lib.versions.major chromium.version);
       in
       [
         (createChromiumExtension {
@@ -74,9 +92,7 @@
         })
       ];
     commandLineArgs = [
-      "--no-sandbox"
       "--ozone-platform=wayland"
-      "--disable-gpu"
       "--force-dark-mode"
       "--restore-last-session"
     ];
