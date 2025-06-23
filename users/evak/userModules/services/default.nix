@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./garbageCollect
     ./torify
   ];
 }
