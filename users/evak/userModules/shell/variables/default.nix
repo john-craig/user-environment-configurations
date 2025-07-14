@@ -37,7 +37,7 @@
         ];
       };
     in
-    lib.attrsets.foldlAttrs
+    (lib.attrsets.foldlAttrs
       (acc: basepath: subpaths:
         (acc + (lib.strings.concatMapStrings
           (subpath: ''
@@ -63,5 +63,5 @@
           '')
           subpaths)))
       ""
-      home_dirs;
+      home_dirs);
 }
