@@ -14,6 +14,9 @@
       godot_4
       gimp
       # davinci-resolve
+      
+      # Not yet able to make JACK work with Nixpkgs Audacity
+      # audacity
     ];
 
     panmuphle = {
@@ -137,6 +140,21 @@
                   "focused_default" = true;
                 }
               ];
+            }
+          ];
+        }
+        {
+          "name" = "sound-editing";
+          "windows" = [
+            {
+              "displayed_default" = true;
+              "applications" = [
+                {
+                  "name" = "audacity";
+                  "exec" = "/usr/bin/audacity";
+                  "focused_default" = true;
+                }
+              ]
             }
           ];
         }
