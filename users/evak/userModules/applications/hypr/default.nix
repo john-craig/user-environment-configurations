@@ -20,11 +20,11 @@
     LIBSEAT_BACKEND = "logind";
     XCURSOR_SIZE = "24";
     HYPRCURSOR_SIZE = "24";
-    AQ_DRM_DEVICES = "/dev/dri/card1";
+    # AQ_DRM_DEVICES = "/dev/dri/card1";
 
-    # LIBGL_DRIVERS_PATH = "/usr/lib/dri";
-    # GBM_BACKENDS_PATH = "/usr/lib/gbm";
-    # XDG_SESSION_TYPE = "wayland";
+    LIBGL_DRIVERS_PATH = "/usr/lib/dri";
+    GBM_BACKENDS_PATH = "/usr/lib/gbm";
+    XDG_SESSION_TYPE = "wayland";
     # WLR_DRM_DEVICES = "/dev/dri/card2";
   };
 
@@ -45,15 +45,15 @@
         };
 
         monitor = [
-          "DP-1,1920x1080,1920x0,auto"
-          "HDMI-A-1,1920x1080,0x0,auto"
+          "HDMI-A-1,1920x1080,1920x0,auto"
+          "DP-1,1920x1080,0x0,auto"
         ];
 
         env = [
           "XDG_SESSION_TYPE,wayland"
 
-          "AQ_TRACE,1"
-          "HYPRLAND_TRACE,1"
+          # "AQ_TRACE,1"
+          # "HYPRLAND_TRACE,1"
         ];
 
         exec-once = [

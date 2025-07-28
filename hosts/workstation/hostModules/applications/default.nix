@@ -2,7 +2,7 @@
 {
   imports = [
     ./panmuphle
-    ./pipewire
+    # ./pipewire
     ./nix
   ];
 }
