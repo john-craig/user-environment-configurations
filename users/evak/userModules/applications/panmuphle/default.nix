@@ -154,7 +154,7 @@
                   "exec" = "/usr/bin/audacity";
                   "focused_default" = true;
                 }
-              ]
+              ];
             }
           ];
         }
