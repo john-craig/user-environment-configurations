@@ -1,12 +1,13 @@
 { config, pkgs, ... }:
 {
-  home.packages = [ pkgs.tor pkgs.coreutils ];
+  home.packages = [ pkgs.tor pkgs.torsocks pkgs.coreutils ];
 
   home.file.".config/tor-proxy.pac".text = let
     # Define your Tor-routed domains here
     torDomains = [
       "psb62860.seedbox.io"
       "check.torproject.org"
+      "*.onion"
     ];
 
     # Convert Nix list of domains into JavaScript array syntax
