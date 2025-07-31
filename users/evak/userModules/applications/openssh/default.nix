@@ -3,6 +3,17 @@
     totp-port-knockd-rs
   ];
 
+  home.file.".config/totp-knocker/knocker.toml".text = ''
+    [totp_knock]
+    secret_value = "ABCDEFGHIJKLMNOP"   # Plaintext value of the shared TOTP secret
+    # secret_path = ""  # Mutually exclusive with 'secret_value'
+    time_interval = 600  # Duration of the TOTP interval, in seconds
+    min_port = 1024     # Lower bound of the range of ports to select for the knocking sequence
+    max_port = 1090    # Upper bound of the range of ports to select for the knocking sequqnece
+    num_ports = 4      # Number of knocks in the sequence
+    dest_port = 23      # Protected port to open/connect to at the end of the sequence
+  '';
+
   programs.ssh = {
     enable = true;
 
@@ -139,6 +150,19 @@
         user = "service";
         identityFile = "~/.ssh/bastion0";
       };
+
+      "bastion0-knocker" =
+        let
+          hostIp = "45.33.8.38";
+          knocker = "${pkgs.totp-port-knockd-rs}/bin/totp-knocker";
+        in
+        {
+          match = "host bastion0-knocker exec \"RUST_LOG=debug ${knocker} ${hostIp} > /tmp/totp-knock.log\"";
+          hostname = "${hostIp}";
+          port = 23;
+          user = "service";
+          identityFile = "~/.ssh/bastion0";
+        };
 
       #######################################################################
       # Live Installers
