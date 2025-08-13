@@ -31,6 +31,21 @@ in {
           }
         ];
       }
+      {
+        name = "streaming";
+        windows = [
+          {
+            displayed_default = true;
+            applications = [
+              {
+                name = "obs-studio";
+                exec = "obs";
+                focused_default = true;
+              }
+            ];
+          }
+        ];
+      }
     ];
 
     workspaceScreens = {
@@ -38,19 +53,23 @@ in {
         default_screen = "RIGHT_MONITOR";
         windows."0".preferred_screen = "LEFT_MONITOR";
       };
-        "studying" = {
+      "studying" = {
         default_screen = "LEFT_MONITOR";
         windows."0".preferred_screen = "RIGHT_MONITOR";
       };
-        "social" = {
+      "social" = {
         default_screen = "RIGHT_MONITOR";
         windows."0".preferred_screen = "LEFT_MONITOR";
       };
-        "development" = {
+      "development" = {
         default_screen = "RIGHT_MONITOR";
         windows."0".preferred_screen = "LEFT_MONITOR";
       };
-        "gaming:feed-the-beast" = {
+      "streaming" = {
+        default_screen = "LEFT_MONITOR";
+        windows."0".preferred_screen = "RIGHT_MONITOR";
+      };
+      "gaming:feed-the-beast" = {
         default_screen = "LEFT_MONITOR";
         windows."0".preferred_screen = "RIGHT_MONITOR";
       };

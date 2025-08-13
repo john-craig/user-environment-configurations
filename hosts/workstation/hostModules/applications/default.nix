@@ -4,5 +4,6 @@
     ./panmuphle
     # ./pipewire
     ./nix
+    ./obs-studio
   ];
 }
