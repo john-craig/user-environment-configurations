@@ -35,8 +35,8 @@
               "displayed_default" = true;
               "applications" = [
                 {
-                  "name" = "chromium";
-                  "exec" = "${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL ${config.programs.chromium.package}/bin/nyxt";
+                  "name" = "nyxt";
+                  "exec" = "${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL ${pkgs.nyxt}/bin/nyxt";
                   "focused_default" = true;
                 }
               ];
