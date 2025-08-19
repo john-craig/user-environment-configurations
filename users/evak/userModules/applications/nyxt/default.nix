@@ -4,6 +4,10 @@
     nyxt
   ];
 
+  home.sessionVariables = {
+    WEBKIT_DISABLE_COMPOSITING_MODE = "1";
+  };
+
   home.file= {
     # nyxt configuration file
     ".config/nyxt/config.lisp".source = pkgs.writeText "config.lisp" ''

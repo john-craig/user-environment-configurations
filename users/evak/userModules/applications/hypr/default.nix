@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
-{
+let
+  activeBorderColor = "rgba(f715abee) rgba(34edf3ee) 45deg";
+in {
   home.packages = with pkgs; [
     # hyprland
     # hypridle
@@ -11,6 +13,7 @@
     faustroll
     # wezterm
     # waybar
+    # wprintidle
 
     nixgl.auto.nixGLDefault
     # nixgl.auto.nixGLNvidia
@@ -39,22 +42,14 @@
         "$faustrollctl" = "${pkgs.faustroll}/bin/faustrollctl";
         "$mainMod" = "SUPER";
 
-        debug = {
-          disable_logs = false;
-          enable_stdout_logs = true;
-        };
+        # debug = {
+        #   disable_logs = false;
+        #   enable_stdout_logs = true;
+        # };
 
-        monitor = [
-          "HDMI-A-1,1920x1080,1920x0,auto"
-          "DP-1,1920x1080,0x0,auto"
-        ];
+        monitor = [ ];
 
-        env = [
-          "XDG_SESSION_TYPE,wayland"
-
-          # "AQ_TRACE,1"
-          # "HYPRLAND_TRACE,1"
-        ];
+        env = [ ];
 
         exec-once = [
           "waybar"
@@ -84,7 +79,7 @@
           gaps_in = 5;
           gaps_out = 10;
           border_size = 2;
-          "col.active_border" = "rgba(f715abee) rgba(34edf3ee) 45deg";
+          "col.active_border" = "${activeBorderColor}";
           "col.inactive_border" = "rgba(595959aa)";
           
           resize_on_border = false;
@@ -118,8 +113,8 @@
         };
 
         dwindle = {
-          pseudotile = true;
           preserve_split = true;
+          pseudotile = true;
         };
 
         master.new_status = "master";
@@ -140,6 +135,7 @@
           '';
         in [
           "$mainMod, RETURN, exec, wezterm"
+          "$mainMod ALT, RETURN, exec, wezterm start --class org.wezfurlong.wezterm.floating"
           "$mainMod, C, killactive,"
           "$mainMod, M, exit,"
           "$mainMod, E, exec, $fileManager"
@@ -207,17 +203,99 @@
           "float,initialTitle:^(Open File)$"
           "float,initialTitle:^(Open Folder)$"
           "float,initialTitle:^(Save File)$"
+
+          "float,center,pinned,class:.*[Ff]loat.*"
+
           "suppressevent maximize, class:.*"
         ];
       };
     };
+  };
 
-    
+  services.hypridle = {
+    enable = true;
+    settings = {
+      general = {
+        "lock_cmd" = "/usr/bin/hyprlock";
+      };
+
+      listener = [
+        {
+          timeout = 900;
+          on-timeout = "/usr/bin/hyprlock";
+        }
+      ];
+    };
+  };
+
+  programs.hyprlock = {
+    enable = true;
+    settings = {
+      "$font" = "Monospace";
+
+      general = {
+        hide_cursor = false;
+      };
+
+      /*
+      auth.fingerprint = {
+        enabled = true;
+        ready_message = "Scan fingerprint to unlock";
+        present_message = "Scanning...";
+        retry_delay = 250;
+      };
+      */
+
+      animations = {
+        enabled = true;
+        bezier = "linear, 1, 1, 0, 0";
+        animation = [
+          "fadeIn, 1, 5, linear"
+          "fadeOut, 1, 5, linear"
+          "inputFieldDots, 1, 2, linear"
+        ];
+      };
+
+      background = {
+        monitor = "";
+        path = "screenshot";
+        blur_passes = 3;
+      };
+
+      input-field = {
+        monitor = "";
+        size = "20%, 5%";
+        outline_thickness = 3;
+        inner_color = "rgba(0, 0, 0, 0.0)";
+
+        outer_color = "${activeBorderColor}";
+        check_color = "rgba(00ff99ee) rgba(ff6633ee) 120deg";
+        fail_color = "rgba(ff6633ee) rgba(ff0066ee) 40deg";
+
+        font_color = "rgb(143, 143, 143)";
+        fade_on_empty = false;
+        rounding = 15;
+
+        font_family = "$font";
+        placeholder_text = "Input password...";
+        fail_text = "$PAMFAIL";
+
+        # Optional settings (commented)
+        # dots_text_format = "*";
+        # dots_size = 0.4;
+        dots_spacing = 0.3;
+
+        # hide_input = true;
+
+        position = "0, -20";
+        halign = "center";
+        valign = "center";
+      };
+    };
   };
 
   home.file = {
     ".config/hypr/hyprpaper.conf".source = ./hyprpaper.conf;
-    # ".config/hypr/hyprland.conf".source = ./hyprland.conf;
     # ".config/hypr/hyprlock.conf".source = ./hyprlock.conf;
     # ".config/hypr/hypridle.conf".source = ./hypridle.conf;
   };

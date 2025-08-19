@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./hostModules
+    ./hostModules/applications
   ];
 
   services.networkStatusMonitor = 

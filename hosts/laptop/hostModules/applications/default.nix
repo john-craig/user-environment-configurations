@@ -2,9 +2,7 @@
 {
   imports = [
     ./panmuphle
-    # ./pipewire
-    ./nix
-    ./obs-studio
+    ./openssh
     ./hypr
   ];
 }
