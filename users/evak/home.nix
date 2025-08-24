@@ -27,7 +27,7 @@
   # environment.
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
-    
+    git-agecrypt
   ];
 
   # Home Manager can also manage your environment variables through
