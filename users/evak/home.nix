@@ -27,7 +27,7 @@
   # environment.
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
-    
+    openssh
   ];
 
   # Home Manager can also manage your environment variables through
